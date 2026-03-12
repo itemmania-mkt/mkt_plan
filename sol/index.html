@@ -50,7 +50,7 @@
         }
 
         h1 {
-            font-size: 36px;
+            font-size: 34px;
             color: var(--slate-gray);
             margin: 12px 0;
             font-weight: 800;
@@ -142,49 +142,97 @@
 
         .highlight { font-weight: 700; color: var(--primary-blue); }
 
-        .flow-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin-top: 20px;
-            padding: 35px 20px;
+        /* 3번 섹션: 이미지 기반 PESO 프로세스 디자인 */
+        .peso-phase-container {
+            margin-top: 25px;
             background-color: #f8fafc;
-            border-radius: 12px;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
         }
 
-        .flow-step {
-            flex: 1;
-            text-align: center;
-            position: relative;
-            padding: 25px 15px;
+        .phase-header {
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--slate-gray);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .phase-header::before {
+            content: "";
+            width: 5px;
+            height: 20px;
+            background: var(--primary-blue);
+            margin-right: 12px;
+            border-radius: 2px;
+        }
+
+        .flow-wrapper {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 55px;
+            margin-bottom: 50px;
+            padding-left: 15px;
+        }
+
+        .flow-box {
+            flex: 0 0 220px;
             background: white;
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            margin: 0 40px;
-            min-width: 140px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            border-radius: 12px;
+            padding: 25px 15px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
         }
 
-        .flow-step:not(:last-child)::after {
-            content: "→";
+        .flow-box:not(:last-child)::after {
+            content: "➔";
             position: absolute;
-            right: -65px;
+            right: -45px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--primary-blue);
-            font-size: 38px;
+            font-size: 34px;
             font-weight: 900;
-            opacity: 0.7;
         }
 
-        .initiative-grid {
+        .step-tag {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--secondary-indigo);
+            display: block;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .step-main {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--primary-blue);
+            line-height: 1.2;
+            display: block;
+        }
+
+        .step-sub {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 10px;
+            display: block;
+            font-weight: 500;
+        }
+
+        .strategy-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
             margin-top: 20px;
         }
 
-        .initiative-card {
+        .card {
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 25px;
@@ -201,68 +249,9 @@
         }
 
         .card-header span { margin-right: 8px; font-size: 22px; }
-        .card-content { font-size: 14px; }
+        .card-content { font-size: 14.5px; }
         .card-content p { margin: 8px 0; line-height: 1.6; }
         .card-content strong { color: var(--primary-blue); font-weight: 700; }
-
-        .roadmap-table th { background-color: #f1f5f9; color: var(--slate-gray); border-top: 2px solid var(--border-color); }
-        .roadmap-bar {
-            height: 24px;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 11px;
-            font-weight: 700;
-            width: 100%;
-        }
-        .bg-blue { background-color: #3b82f6; }
-        .bg-purple { background-color: #818cf8; }
-        .bg-red { background-color: #dc2626; }
-
-        .timeline-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .timeline-card {
-            border: 1px solid var(--border-color);
-            padding: 15px;
-            border-radius: 8px;
-            background: #fff;
-        }
-
-        .timeline-time {
-            font-weight: 800;
-            color: var(--accent-red);
-            font-size: 15px;
-            border-bottom: 2px solid #fee2e2;
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-        }
-
-        .timeline-list {
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            font-size: 13px;
-        }
-
-        .timeline-list li {
-            margin-bottom: 8px;
-            padding-left: 12px;
-            position: relative;
-        }
-
-        .timeline-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--primary-blue);
-        }
 
         .strategy-list {
             list-style: none;
@@ -306,40 +295,34 @@
 
     <div class="summary-box">
         <p>
-            본 전략안은 2026. 04. 22 '솔: 인챈트' 오픈 시점 <strong>시장 점유율 우위 확보(51%↑)</strong>를 위한 단계별 통합 실행안 <br>
-            리니지 개발 DNA를 보유한 게임 특성을 고려하여 <strong>리니지 라이크 고관여 유저 정밀 타겟팅</strong> 및 브랜드 각인 전략 가동 <br>
-            자체 운영 중인 <strong>아이온2, 리니지 클래식 커뮤니티 성공 사례</strong>를 이식한 '자사 커뮤니티 사이트'를 마케팅 핵심 거점으로 활용
+            본 전략안은 2026. 04. 22 '솔: 인챈트' 오픈 시점 <strong>시장 과반 점유(51%↑)</strong> 확보를 위한 통합 실행 프로세스입니다. <br>
+            검증된 타겟군(리니지 라이크 고관여층)의 인지 경로를 역추적하여 <strong>신뢰 구축 → 인프라 수용 → 집중 전환</strong>의 선순환 구조를 설계했습니다. <br>
+            <strong>"솔: 인챈트 거래는 아이템매니아"</strong> 슬로건을 각 단계별 핵심 메시지로 활용하여 독보적 시장 지배력을 확보합니다.
         </p>
     </div>
 
-    <!-- 1. 핵심 성과 지표 (KPI) -->
+    <!-- 1. 캠페인 핵심 성과 지표 (KPI) -->
     <h2>1. 캠페인 핵심 성과 지표 (KPI)</h2>
     <div class="kpi-container">
         <div class="kpi-card">
-            <div>
-                <span class="kpi-value highlight-red">51% 이상</span>
-                <span class="kpi-label">전체 거래 점유율</span>
-            </div>
+            <span class="kpi-value highlight-red">51% 이상</span>
+            <span class="kpi-label">전체 거래 점유율 (과반 선점)</span>
             <div class="kpi-details">
                 기준: 런칭 후 1개월간 주요 거래 사이트 합산액<br>
                 산식: (당사 거래액 / 주요 경쟁사 거래 합계) x 100
             </div>
         </div>
         <div class="kpi-card">
-            <div>
-                <span class="kpi-value">55% ↑</span>
-                <span class="kpi-label">네이버 검색 가시성</span>
-            </div>
+            <span class="kpi-value">55% ↑</span>
+            <span class="kpi-label">네이버 검색 가시성 확보</span>
             <div class="kpi-details">
-                기준: 네이버 모바일/PC 1페이지 내 자사 콘텐츠 노출수<br>
-                산식: (자사 콘텐츠 노출수 / 네이버 1페이지 결과수) x 100
+                기준: 네이버 1페이지 내 자사 콘텐츠 노출수<br>
+                목표: 검색 총량의 과반 이상을 자사 채널로 점유
             </div>
         </div>
         <div class="kpi-card">
-            <div>
-                <span class="kpi-value">Top 1~3</span>
-                <span class="kpi-label">핵심 키워드 검색 순위</span>
-            </div>
+            <span class="kpi-value">Top 1~3</span>
+            <span class="kpi-label">핵심 키워드 검색 순위</span>
             <div class="kpi-details">
                 기준: '솔 인챈트 시세', '솔 인챈트 거래' 등<br>
                 목표: 런칭 D-7부터 포털 주요 전환어 상단 유지
@@ -361,12 +344,12 @@
             <tr>
                 <td class="highlight">Segmentation</td>
                 <td>리니지M/W, 오딘 등 하드코어 MMORPG 거래 경험자</td>
-                <td>실제 아이템/재화 거래에 자본을 투입해본 검증된 유저 군집을 대상으로 CRM 타겟 데이터 추출</td>
+                <td>실제 고액 거래 이력이 검증된 유저 군집을 대상으로 CRM 타겟 데이터 정밀 추출</td>
             </tr>
             <tr>
                 <td class="highlight">Targeting</td>
                 <td>리니지 계열 게임 DNA에 최적화된 고관여 헤비 유저 및 <br> 실질 수익화(쌀먹) 니즈가 명확한 하드코어 거래층</td>
-                <td>불확실한 외부 DB 대신 자사 활성 유저와 외부 고의도 검색 트래픽 유입에 집중하여 실거래 점유율 강제 확보</td>
+                <td>불확실한 타겟을 배제하고, 실제 자본 투입 의지가 높은 유저들의 검색 경로 및 커뮤니티 여론 선점에 집중</td>
             </tr>
             <tr>
                 <td class="highlight">Positioning</td>
@@ -376,209 +359,114 @@
         </tbody>
     </table>
 
-    <!-- 3. PESO 추진 순서 및 실행 프로세스 -->
-    <h2>3. PESO 전략 단계별 추진 프로세스</h2>
+    <!-- 3. PESO 전략 단계별 추진 프로세스 (image_2dd6e0.png 기반 수정) -->
+    <h2>3. 단계별 추진 프로세스: 유저 행동 경로 기반 전략 배치</h2>
     <div class="summary-box">
-        <p>유입 트래픽 이탈 방지를 위한 <strong>[Owned] 인프라 완비 → [Earned] 신뢰 구축 → [Shared] 참여 확산 → [Paid] 집중 전환</strong> 프로세스</p>
+        <p style="font-size: 15px;">※ 본 프로세스는 유저의 <strong>'정보 탐색 → 혜택 인지 → 플랫폼 정착'</strong> 여정을 반영하여 PESO 선후 관계를 실무적으로 최적화함</p>
     </div>
-    <div class="flow-container">
-        <div class="flow-step">
-            <div class="highlight" style="font-size: 16px; margin-bottom: 5px;">Step 1. Owned</div>
-            <div style="font-size: 12px;">자사 커뮤니티 사이트<br>(공식유튜브/정보광장)</div>
+
+    <div class="peso-phase-container">
+        <!-- 오픈 전 단계 -->
+        <div class="phase-header">[오픈 전] 신뢰 구축 및 잠재 유저 수용 (Earned/Shared → Owned)</div>
+        <div class="flow-wrapper">
+            <div class="flow-box">
+                <span class="step-tag">Step 1. E/S</span>
+                <span class="step-main">기초 신뢰 확보</span>
+                <span class="step-sub">SEO 블로그 포스팅<br>유튜브 숏폼/SNS 홍보</span>
+            </div>
+            <div class="flow-box">
+                <span class="step-tag">Step 2. Owned</span>
+                <span class="step-main">다이렉트 CRM</span>
+                <span class="step-sub">DM, LMS, 앱푸시<br>선점 혜택 직접 제공</span>
+            </div>
+            <div class="flow-box">
+                <span class="step-tag">Step 3. O/S</span>
+                <span class="step-main">커뮤니티 거점화</span>
+                <span class="step-sub">자사 커뮤니티 오픈<br>크리에이터 협업 홍보</span>
+            </div>
         </div>
-        <div class="flow-step">
-            <div class="highlight" style="font-size: 16px; margin-bottom: 5px;">Step 2. Earned</div>
-            <div style="font-size: 12px;">SEO 검색 지배<br>(블로그/태그)</div>
-        </div>
-        <div class="flow-step">
-            <div class="highlight" style="font-size: 16px; margin-bottom: 5px;">Step 3. Shared</div>
-            <div style="font-size: 12px;">이니셔티브 확산<br>(SNS/챌린지)</div>
-        </div>
-        <div class="flow-step">
-            <div class="highlight" style="font-size: 16px; margin-bottom: 5px;">Step 4. Paid</div>
-            <div style="font-size: 12px;">물리적 거점 점유<br>(PC방 광고)</div>
+
+        <!-- 오픈 후 단계 -->
+        <div class="phase-header">[오픈 후] 강력한 전환 및 대세감 유지 (Paid → Shared/Earned)</div>
+        <div class="flow-wrapper" style="margin-bottom: 0;">
+            <div class="flow-box">
+                <span class="step-tag">Step 4. Paid</span>
+                <span class="step-main">집중 스케일업</span>
+                <span class="step-sub">오픈이벤트 집행<br>PC방/유료매체 광고</span>
+            </div>
+            <div class="flow-box">
+                <span class="step-tag">Step 5. S/E</span>
+                <span class="step-main">이슈 및 리텐션</span>
+                <span class="step-sub">거래 이슈 쇼츠 확산<br>바이럴/SNS 지속 노출</span>
+            </div>
         </div>
     </div>
 
-    <!-- 4. 블로그 및 사이트 태그 활용 SEO 전략 -->
-    <h2>4. 블로그 및 유튜브 채널별 계정거래 콘텐츠 전략</h2>
+    <!-- 4. 블로그 및 사이트 태그 활용 SEO 전략 (image_38d6c6.png 기반 수정) -->
+    <h2>4. 블로그 및 사이트 태그 활용 SEO 전략</h2>
     <div class="summary-box">
-        <p>전략 테마: 단순 정보 나열을 배제하고 <strong>'솔: 인챈트 거래는 아이템매니아'</strong> 메시지를 모든 콘텐츠의 결론으로 도출</p>
+        <p>쇼케이스 데이터 기반 정보성 콘텐츠 도배 및 <strong>포털 상단 AI 답변 영역(AIO)</strong> 노출 극대화 가이드</p>
     </div>
     <table>
         <thead>
             <tr>
-                <th width="15%">콘텐츠 축</th>
-                <th width="45%">주요 스토리텔링 테마 (블로그/유튜브)</th>
+                <th width="15%">키워드 축</th>
+                <th width="45%">주요 주제 및 키워드 군</th>
                 <th width="40%">목적 및 방향</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td class="highlight">정보형</td>
-                <td>쇼케이스 분석, 직업 추천, 스쿼드 시스템 활용법 <br> 무과금 육성 후기 및 성장 루트 공개</td>
-                <td><strong>정보 신뢰성 선점:</strong> 고관여 유저의 필수 검색 경로를 당사 제작 콘텐츠로 도배</td>
+                <td>쇼케이스 요약, 직업 추천(레인저/나이트/메이지), <br> 스쿼드 시스템 분석, 무과금 육성 후기</td>
+                <td>오픈 전 기대 유저 유입 및 정보 신뢰성 선점</td>
             </tr>
             <tr>
-                <td class="highlight">계정/선물형</td>
-                <td><strong>부캐 소환 동반 플레이 효율 분석</strong>, <br> 캐릭터 선물하기 안전하게 하는 법, 계정 시세 산정</td>
-                <td><strong>계정 거래 수요 장악:</strong> 캐릭터 소환이라는 게임 특징을 활용한 계정/캐릭터 거래 수요를 블로그/유튜브 콘텐츠로 사전 장악</td>
+                <td class="highlight">비교형</td>
+                <td>솔: 인챈트 vs 리니지M BM 분석, 방치형 vs 컨트롤형 장단점, <br> 초기 패키지(3.3) 효율 분석</td>
+                <td>리니지 유저층 이동 수요 및 수익성 판단 유저 흡수</td>
             </tr>
             <tr>
-                <td class="highlight">비교/전환형</td>
-                <td>솔: 인챈트 vs 리니지M BM 및 수익성 전격 비교 <br> "솔: 인챈트 거래는 아이템매니아" 슬로건 노출</td>
-                <td><strong>이동 명분 제시:</strong> 리니지 유저층의 경제적 이동 근거 제시 및 플랫폼 종착지 지정</td>
+                <td class="highlight">거래/시세형</td>
+                <td>레어 닉네임 TOP3 거래가, 쌀먹 수익 분석, <br> 서버별 다이아 시세 리포트, <strong>부캐 소환 계정 거래가</strong></td>
+                <td>구매/판매 의도 높은 고관여 유저 전환 강화 및 <br> 캐릭터 선물하기/계정 거래 니즈 당사로 집중</td>
             </tr>
         </tbody>
     </table>
 
-    <!-- 5. [신규 이니셔티브] 크리에이터 연계 파격 콘텐츠 전략 -->
+    <!-- 5. [신규 이니셔티브] 크리에이터 및 유튜브 실행 전략 -->
     <h2>5. [신규 이니셔티브] 크리에이터 및 유튜브 실행 전략</h2>
     <div class="summary-box">
         <p>실행 전략: 모든 협업 크리에이터의 멘트 및 자막에 <strong>'솔: 인챈트 거래는 아이템매니아'</strong> 구호를 반복 노출하여 강력한 인지도 형성</p>
     </div>
-    <div class="initiative-grid">
-        <div class="initiative-card">
+    <div class="strategy-grid">
+        <div class="card">
             <div class="card-header"><span>🎥</span> 큰손 BJ '계정 강화' 라이브 거래</div>
             <div class="card-content">
                 <p>• <strong>실행:</strong> BJ가 자신의 계정 성장을 위해 당사 플랫폼에서 재화 및 **고가치 부캐 계정**을 직접 수급하는 퍼포먼스 연출</p>
                 <p>• <strong>효과:</strong> "솔: 인챈트 거래는 아이템매니아" 구호 노출과 함께 거래의 신속성/안전성 실시간 증명</p>
             </div>
         </div>
-        <div class="initiative-card">
+        <div class="card">
+            <div class="card-header"><span>💸</span> 리얼 '캐릭터 선물하기' 수익 챌린지</div>
             <div class="card-content">
-                <div class="card-header"><span>💸</span> 리얼 '캐릭터 선물하기' 수익 챌린지</div>
                 <p>• <strong>실행:</strong> 유튜버가 부캐 소환 시스템을 활용해 캐릭터를 육성하고, 이를 **캐릭터 선물하기**로 현금화하는 과정 리얼 다큐 제작</p>
                 <p>• <strong>효과:</strong> 게임 시스템과 거래의 결합을 통한 실질적 수익 모델 제시로 유입 극대화</p>
             </div>
         </div>
-        <div class="initiative-card">
+        <div class="card">
             <div class="card-header"><span>🏆</span> 전 서버 최초 '신화템 바운티 헌터'</div>
             <div class="card-content">
                 <p>• <strong>실행:</strong> 서버 최초 1티어 득템 유저가 당사 거래 인증 시 파격적 포상금 지급 및 해당 이슈를 커뮤니티 대세감으로 확산</p>
                 <p>• <strong>효과:</strong> '초고가 거래는 매니아'라는 인식을 각인시켜 경쟁사 유입 경로를 원천 차단</p>
             </div>
         </div>
-        <div class="initiative-card">
+        <div class="card">
             <div class="card-header"><span>🔑</span> 유저 참여형 SNS 바이럴 (Threads/FB)</div>
             <div class="card-content">
                 <p>• <strong>실행:</strong> "리니지M 유저의 솔: 인챈트 이주 고민", "3.3 패키지 가치 토론" 등 소통형 콘텐츠 배포</p>
                 <p>• <strong>효과:</strong> 유저 자발적 언급량 증대로 네이버/구글 검색 가시성 목표 달성 지원</p>
             </div>
-        </div>
-    </div>
-
-    <!-- 6. AARRR 기준 유저 유입 및 전환 흐름 최적화 -->
-    <h2>6. AARRR 기준 유저 유입 및 전환 흐름 최적화</h2>
-    <table>
-        <thead>
-            <tr>
-                <th width="20%">단계</th>
-                <th width="40%">핵심 목적</th>
-                <th width="40%">주요 실행 수단</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="highlight">Acquisition</td>
-                <td>인지 확보 및 잠재 유저 유입</td>
-                <td>쇼케이스 요약 숏폼, SEO 블로그, SNS 설문</td>
-            </tr>
-            <tr>
-                <td class="highlight">Activation</td>
-                <td>거래 페이지 방문 및 관심 형성</td>
-                <td><strong>자사 커뮤니티 내 성장 가이드 노출</strong>, 정보성 시세 리포트 배포</td>
-            </tr>
-            <tr>
-                <td class="highlight">Revenue</td>
-                <td>실제 거래 및 수익 발생</td>
-                <td>수수료 할인 쿠폰, 거래 등록 보상 이벤트</td>
-            </tr>
-            <tr>
-                <td class="highlight">Retention/Referral</td>
-                <td>재방문 유도 및 자발적 확산</td>
-                <td>자사 커뮤니티 득템 인증 릴레이, 실시간 시세 알림 CRM</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- 7. 광고 및 홍보 채널별 통합 로드맵 -->
-    <h2>7. 광고 및 홍보 채널별 통합 로드맵</h2>
-    <table class="roadmap-table">
-        <thead>
-            <tr>
-                <th width="20%">채널 구분</th>
-                <th width="26%">03. 12 ~ 03. 31 (준비기)</th>
-                <th width="26%">04. 01 ~ 04. 21 (확산기)</th>
-                <th width="28%">04. 22 ~ (런칭/집중기)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td style="font-weight: 700;">자사 커뮤니티 사이트</td>
-                <td><div class="roadmap-bar bg-blue">솔: 인챈트 정보광장 게시판 구축</div></td>
-                <td><div class="roadmap-bar bg-blue">아이온2/리니지C 유저 교차 홍보</div></td>
-                <td><div class="roadmap-bar bg-red">서버 현황 및 정보 허브 운영</div></td>
-            </tr>
-            <tr>
-                <td style="font-weight: 700;">SEO/블로그/유튜브</td>
-                <td><div class="roadmap-bar bg-blue">개발 DNA 및 기초 정보 점유</div></td>
-                <td><div class="roadmap-bar bg-purple">계정거래/캐릭터 선물하기 콘텐츠 배포</div></td>
-                <td><div class="roadmap-bar bg-red">실시간 통합 시세 리포트 발행</div></td>
-            </tr>
-            <tr>
-                <td style="font-weight: 700;">CRM/참여형</td>
-                <td><div class="roadmap-bar bg-blue">리니지 계열 세그먼트 추출</div></td>
-                <td><div class="roadmap-bar bg-purple">개인화 쿠폰/DM 1차 발송</div></td>
-                <td><div class="roadmap-bar bg-red">오픈 알림 및 쿠폰 푸시 가동</div></td>
-            </tr>
-            <tr>
-                <td style="font-weight: 700;">PC방/오프라인</td>
-                <td><div class="roadmap-bar bg-blue">인벤토리 부킹/소재 제작</div></td>
-                <td><div class="roadmap-bar bg-purple">바탕화면 및 런처 적용</div></td>
-                <td><div class="roadmap-bar bg-red">오픈 당일 팝업 집중 노출</div></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- 8. 오픈 직후 72시간 골든타임 정밀 실행안 -->
-    <h2>8. 오픈 직후 72시간 골든타임 정밀 실행안 (Hourly Plan)</h2>
-    <div class="timeline-grid">
-        <div class="timeline-card">
-            <div class="timeline-time">D-Day (0~12h)</div>
-            <ul class="timeline-list">
-                <li>거래 카테고리 즉시 활성화</li>
-                <li><strong>"솔: 인챈트 거래는 아이템매니아"</strong> 푸시</li>
-                <li>자사 커뮤니티 실시간 서버 현황 오픈</li>
-                <li>실시간 시세 리포트 1차 발행</li>
-            </ul>
-        </div>
-        <div class="timeline-card">
-            <div class="timeline-time">D+1 (12~24h)</div>
-            <ul class="timeline-list">
-                <li>레어 닉네임 TOP3 거래 현황 공개</li>
-                <li>3.3 패키지 효율 분석 포스팅 배포</li>
-                <li>최적의 성장 루트(공략) 노출</li>
-                <li>커뮤니티 득템 인증 이벤트 개시</li>
-            </ul>
-        </div>
-        <div class="timeline-card">
-            <div class="timeline-time">D+2 (24~48h)</div>
-            <ul class="timeline-list">
-                <li>주요 서버 재화 환율 변동 중계</li>
-                <li>커뮤니티 내 거래 방법 Q&A 대응</li>
-                <li><strong>"캐릭터 선물하기" 가이드 콘텐츠 배포</strong></li>
-                <li>미전환 유저 대상 리마인드 쿠폰 발송</li>
-            </ul>
-        </div>
-        <div class="timeline-card">
-            <div class="timeline-time">D+3 (48~72h)</div>
-            <ul class="timeline-list">
-                <li>무과금/작업장 수익성 분석 리포트</li>
-                <li>서버별 거래 대세감 리마인드</li>
-                <li>이탈 방지를 위한 시세 변동 알림</li>
-                <li>골든타임 성과 지표 1차 리뷰</li>
-            </ul>
         </div>
     </div>
 
