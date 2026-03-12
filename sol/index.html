@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>솔:인챈트 마케팅 전략 통합 리포트</title>
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --secondary-indigo: #4338ca;
+            --accent-red: #dc2626;
+            --slate-gray: #334155;
+            --white: #ffffff;
+            --bg-slate: #f1f5f9;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--slate-gray);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-slate);
+            font-size: 15px;
+        }
+
+        .report-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: var(--white);
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        header {
+            border-bottom: 4px solid var(--primary-blue);
+            padding-bottom: 25px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .report-label {
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 34px;
+            color: var(--slate-gray);
+            margin: 12px 0;
+            font-weight: 800;
+        }
+
+        .summary-box {
+            background-color: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-left: 8px solid var(--primary-blue);
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+        }
+
+        .summary-box p {
+            margin: 0;
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 1.8;
+            color: var(--slate-gray);
+        }
+
+        h2 {
+            font-size: 26px;
+            color: var(--primary-blue);
+            margin-top: 55px;
+            border-bottom: 2.5px solid var(--border-color);
+            padding-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .kpi-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 25px;
+            margin-bottom: 45px;
+        }
+
+        .kpi-card {
+            background-color: var(--white);
+            padding: 25px 15px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s;
+        }
+        
+        .kpi-card:hover { transform: translateY(-5px); border-color: var(--primary-blue); }
+
+        .kpi-value {
+            display: block;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+        
+        .kpi-value.highlight-red { color: var(--accent-red); }
+
+        .kpi-label { font-size: 14px; color: #64748b; font-weight: 600; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            text-align: center;
+            font-size: 14.5px;
+        }
+
+        th { background-color: #f8fafc; font-weight: 700; color: var(--primary-blue); }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .card {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            background-color: var(--white);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+        }
+
+        .strategy-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .strategy-list li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 14.5px;
+        }
+
+        .strategy-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .highlight { font-weight: 700; color: var(--primary-blue); }
+        .alert-text { color: var(--accent-red); font-weight: 700; }
+
+        .flow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8fafc;
+            border-radius: 12px;
+        }
+
+        .flow-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding: 15px;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin: 0 10px;
+        }
+
+        .flow-step:not(:last-child)::after {
+            content: "➜";
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .gantt-bar {
+            height: 22px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .bar-step1 { background-color: #3b82f6; }
+        .bar-step2 { background-color: #6366f1; }
+        .bar-launch { background-color: #dc2626; }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="report-container">
+    <header>
+        <div class="report-label">Strategic Marketing Integrated Report</div>
+        <h1>솔:인챈트 2026 런칭 통합 마케팅 전략 보고서</h1>
+        <p style="color: #64748b; font-weight: 600;">보고일: 2026. 03. 12 | 마케팅기획실</p>
+    </header>
+
+    <div class="summary-box">
+        <p>
+            본 전략안은 2026. 04. 22 '솔:인챈트' 오픈 시점 <strong>시장 과반 점유(51%↑)</strong> 달성을 위한 통합 실행 방안 <br>
+            리니지 개발 DNA를 보유한 고관여 유저 정밀 타겟팅과 PESO 미디어 믹스 가동을 통한 경쟁사(바로템) 유입 원천 차단 전략 <br>
+            공식 사전예약 부재 상황을 당사의 <strong>독자적 유저 선점 기회</strong>로 전환 및 데이터 기반 CRM 쿠폰 마케팅을 통한 실거래 점유율 강제 확보
+        </p>
+    </div>
+
+    <!-- 1. 핵심 성과 지표 (KPI) -->
+    <h2>1. 캠페인 핵심 성과 지표 (KPI)</h2>
+    <div class="kpi-container">
+        <div class="kpi-card">
+            <span class="kpi-value highlight-red">51% 이상</span>
+            <span class="kpi-label">전체 거래 점유율 (과반 선점)</span>
+        </div>
+        <div class="kpi-card">
+            <span class="kpi-value">55%↑</span>
+            <span class="kpi-label">검색 가시성(SOV)</span>
+        </div>
+        <div class="kpi-card">
+            <span class="kpi-value">Top 1~3</span>
+            <span class="kpi-label">핵심 거래 키워드 상단 노출</span>
+        </div>
+    </div>
+
+    <!-- 2. CRM 타겟 추출 근거 및 전략 -->
+    <h2>2. CRM 타겟팅 전략: 리니지 라이크 고래 유저 강제 유입</h2>
+    <table>
+        <thead>
+            <tr>
+                <th width="30%">분석 항목</th>
+                <th width="70%">타겟팅 근거 및 점유율 확보 전략</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="highlight">개발 DNA의 일치</td>
+                <td>솔:인챈트 개발진이 리니지M 핵심 인력인 점을 고려, <span class="highlight">리니지 라이크 거래 유저</span>의 타겟 일치성 확신</td>
+            </tr>
+            <tr>
+                <td class="highlight">개인화 DM 발송</td>
+                <td>리니지M/W/클래식 상위 거래자 대상 '솔:인챈트 전용 할인 쿠폰' 발송을 통한 첫 거래 채널 귀속</td>
+            </tr>
+            <tr>
+                <td class="highlight">독자 알림 캠페인</td>
+                <td>공식 사전예약 부재를 이용한 <strong>'아이템매니아 단독 사전 신청'</strong> 페이지 운영 및 DB 선점</td>
+            </tr>
+            <tr>
+                <td class="highlight">점유율 방어</td>
+                <td>경쟁사 대비 압도적인 혜택과 물량 노출을 통한 바로템 유입 가능성 원천 말소</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 3. PESO 추진 순서 및 로드맵 -->
+    <h2>3. PESO 전략 단계별 추진 프로세스 (실행 순서)</h2>
+    <div class="summary-box">
+        <p>유입 트래픽 이탈 방지를 위한 <strong>[Owned] 기반 구축 → [Earned] 신뢰 확보 → [Shared] 대세감 조성 → [Paid] 집중 전환</strong> 실행 프로세스</p>
+    </div>
+    <div class="flow-container">
+        <div class="flow-step">
+            <div class="highlight" style="font-size: 18px; margin-bottom: 5px;">Step 1. Owned</div>
+            <div style="font-size: 13px;">자사 채널 인프라<br>(사전알림/공식유튜브)</div>
+        </div>
+        <div class="flow-step">
+            <div class="highlight" style="font-size: 18px; margin-bottom: 5px;">Step 2. Earned</div>
+            <div style="font-size: 13px;">SEO 검색 지배<br>(블로그/태그)</div>
+        </div>
+        <div class="flow-step">
+            <div class="highlight" style="font-size: 18px; margin-bottom: 5px;">Step 3. Shared</div>
+            <div style="font-size: 13px;">이니셔티브 확산<br>(크리에이터/챌린지)</div>
+        </div>
+        <div class="flow-step">
+            <div class="highlight" style="font-size: 18px; margin-bottom: 5px;">Step 4. Paid</div>
+            <div style="font-size: 13px;">물리적 거점 점유<br>(PC방 광고)</div>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th width="15%">단계</th>
+                <th width="20%">추진 기간</th>
+                <th width="65%">주요 과업 및 실행 로직</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="highlight">Owned</td>
+                <td>03.12 - 03.20</td>
+                <td>사전알림 페이지 구축 및 CRM 시나리오 확정을 통한 유입 유저 수용 인프라 완비</td>
+            </tr>
+            <tr>
+                <td class="highlight">Earned</td>
+                <td>03.21 - 04.05</td>
+                <td>정보성 SEO 블로그 대량 유포 및 포털 상단 점유를 통한 검색 트래픽 선점</td>
+            </tr>
+            <tr>
+                <td class="highlight">Shared</td>
+                <td>04.06 - 04.21</td>
+                <td>SNS/숏폼 이슈 메이킹 및 커뮤니티 여론 형성을 통한 출시 전 대세감 극대화</td>
+            </tr>
+            <tr>
+                <td class="highlight">Paid</td>
+                <td>04.15 - 오픈</td>
+                <td>PC방 오프라인 거점 점유 및 쌀먹 전문 유튜버 라이브 기반 실거래 수요 강제 전환</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 4. 블로그 및 사이트 태그 활용 SEO 전략 -->
+    <h2>4. 블로그 및 사이트 태그 활용 SEO 전략</h2>
+    <div class="summary-box">
+        <p>네이버/구글 검색창을 아이템매니아 정보로 도배하기 위한 <strong>고밀도 키워드 점유 및 AI 답변 최적화</strong> 가이드</p>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th width="20%">구분</th>
+                <th width="80%">세부 실행 전략 및 포스팅 가이드</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="highlight">제목 최적화</td>
+                <td>키 키워드 + 노출 최적화 키워드 조합으로 <strong>34자 이내</strong> 구성 (예: 솔인챈트 시세 정보 및 다이아 안전 거래 꿀팁 공개)</td>
+            </tr>
+            <tr>
+                <td class="highlight">AI 답변(AIO) 구조</td>
+                <td>[핵심 요약] 1단락 핵심 답변 배치 - [정보 확장] 표 및 리스트 활용 - [최종 요약] 결론 도출의 3단계 구조 적용</td>
+            </tr>
+            <tr>
+                <td class="highlight">본문 작성 원칙</td>
+                <td>감성과 정보가 결합된 문체 지향. 소제목을 문맥에 녹여 자연스럽게 작성. 핵심 키워드 및 연관 키워드 본문 내 5회 이상 반복</td>
+            </tr>
+            <tr>
+                <td class="highlight">자연스러운 노출</td>
+                <td>본문 하단 고정 멘트 삽입: <strong>"솔:인챈트 거래의 표준, 역시 아이템매니아입니다."</strong> 링크와 함께 유기적 연결</td>
+            </tr>
+            <tr>
+                <td class="highlight">티스토리 태그</td>
+                <td>쉼표( , ) 구분 필수 적용: 솔인챈트,솔인챈트시세,솔인챈트다이아,솔인챈트거래,아이템매니아,쌀먹공략,신권시스템</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 5. [신규 이니셔티브] 크리에이터 연계 파격 콘텐츠 전략 -->
+    <h2>5. [신규 이니셔티브] 크리에이터 연계 파격 콘텐츠 전략</h2>
+    <div class="summary-box">
+        <p>단순 배너 스폰서십을 탈피한 <strong>스토리텔링형 유튜브 협업</strong> 모델. 유저의 도파민을 자극하여 '거래는 매니아'라는 인식을 심리적으로 점유하는 전략</p>
+    </div>
+    <div class="strategy-grid">
+        <div class="card">
+            <span class="card-title">🎥 큰손 BJ '라이브 커머스' 거래</span>
+            <ul class="strategy-list">
+                <li><strong>실행:</strong> 최상위 랭커 BJ 생방송 중 실시간 강화 재료 대량 수급 '쇼호스트형' 연출</li>
+                <li><strong>효과:</strong> 자사 거래창 직접 노출을 통한 압도적 신뢰도 전파</li>
+            </ul>
+        </div>
+        <div class="card">
+            <span class="card-title">💸 무과금 '리얼 쌀먹' 30일 챌린지</span>
+            <ul class="strategy-list">
+                <li><strong>실행:</strong> 쌀먹 전문 유튜버의 0원 시작 현금화 과정 리얼 다큐멘터리 제작</li>
+                <li><strong>효과:</strong> 실질 수익 창출 경로 시각화로 생계형 유저 유입 극대화</li>
+            </ul>
+        </div>
+        <div class="card">
+            <span class="card-title">🏆 전 서버 최초 '바운티 헌터'</span>
+            <ul class="strategy-list">
+                <li><strong>실행:</strong> 서버 최초 신화템 거래 유저 대상 수수료 면제 및 포상금 1,000만 원 지급 이벤트 중계</li>
+                <li><strong>효과:</strong> 고가 거래는 무조건 당사에서 이루어진다는 대세감 형성</li>
+            </ul>
+        </div>
+        <div class="card">
+            <span class="card-title">🔑 시크릿 파트너스 코드</span>
+            <ul class="strategy-list">
+                <li><strong>실행:</strong> 유튜버 닉네임 조합 가입/할인 코드 발급 및 성과 기반 인센티브 부여</li>
+                <li><strong>효과:</strong> 데이터 기반 효율 채널 집중 투입 및 크리에이터 로열티 확보</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 6. 광고 및 홍보 채널별 통합 로드맵 -->
+    <h2>6. 광고 및 홍보 채널별 통합 로드맵</h2>
+    <table>
+        <thead>
+            <tr>
+                <th width="20%">채널 구분</th>
+                <th>03. 12 ~ 03. 31 (준비기)</th>
+                <th>04. 01 ~ 04. 21 (확산기)</th>
+                <th>04. 22 ~ (런칭/집중기)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="font-weight: 700;">자사 유튜브 (Owned)</td>
+                <td><div class="gantt-bar bar-step1">콘텐츠 기획 및 채널 정비</div></td>
+                <td><div class="gantt-bar bar-step1">'솔인챈트는 매니아' 영상 업로드</div></td>
+                <td><div class="gantt-bar bar-launch">슬로건 노출 및 시세 생중계</div></td>
+            </tr>
+            <tr>
+                <td style="font-weight: 700;">이니셔티브 (Shared)</td>
+                <td><div class="gantt-bar bar-step2">챌린지 유튜버 섭외 및 가이드</div></td>
+                <td><div class="gantt-bar bar-step2">사전 예고 및 바운티 선언</div></td>
+                <td><div class="gantt-bar bar-launch">라이브 방송 및 챌린지 결과 공개</div></td>
+            </tr>
+            <tr>
+                <td style="font-weight: 700;">CRM (Owned)</td>
+                <td><div class="gantt-bar bar-step1">리니지 라이크 세그먼트 추출</div></td>
+                <td><div class="gantt-bar bar-step2">개인화 DM 및 쿠폰 발송</div></td>
+                <td><div class="gantt-bar bar-launch">오픈 집중 푸시/리마케팅</div></td>
+            </tr>
+            <tr>
+                <td style="font-weight: 700;">SEO (Earned)</td>
+                <td><div class="gantt-bar bar-step1">기초 가이드 100건 배포</div></td>
+                <td><div class="gantt-bar bar-step2">실거래 키워드 상단 점유</div></td>
+                <td><div class="gantt-bar bar-launch">시세 리포트 일일 발행</div></td>
+            </tr>
+            <tr>
+                <td style="font-weight: 700;">PC방 광고 (Paid)</td>
+                <td><div class="gantt-bar bar-step1">인벤토리 부킹/소재 제작</div></td>
+                <td><div class="gantt-bar bar-step2">바탕화면 및 런처 적용</div></td>
+                <td><div class="gantt-bar bar-launch">오픈 당일 팝업 집중 노출</div></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 7. 실무 의견 및 결론 -->
+    <h2>7. 결론 및 실무 제언</h2>
+    <div class="summary-box" style="margin-top: 10px; border-left-color: var(--accent-red);">
+        <ul class="strategy-list" style="font-size: 14px; color: #475569;">
+            <li><strong>점유율 51% 과반 확보:</strong> 단순 유입을 넘어 실거래액 기준 과반 점유 달성을 위한 모든 리소스 집중 투입</li>
+            <li><strong>유튜브 채널 정체성 강화:</strong> 자사 채널을 통해 <strong>"솔인챈트는 아이템매니아"</strong> 슬로건을 각인시켜 브랜드 신뢰도 공고화</li>
+            <li><strong>이니셔티브 기반 전환:</strong> 신규 이니셔티브 콘텐츠를 통해 '거래는 곧 재미와 수익'이라는 심리적 트리거 작동</li>
+            <li><strong>공격적인 CRM 활용:</strong> 리니지 라이크 거래 유저 대상 개인화 혜택 제시를 통한 당사 플랫폼 귀속 가속화</li>
+            <li><strong>지속적 SOV 관리:</strong> 검색 가시성 55% 달성을 위한 블로그 SEO 화력 상시 점검 및 고관여 키워드 이탈 즉시 보정</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>솔:인챈트 런칭 캠페인 - 데이터 기반 실행을 통한 독보적 시장 지배력 강화</p>
+        <div style="font-weight: 700; color: var(--primary-blue); margin-top: 10px;">아이템매니아 | 2026년 마케팅 성공의 기준</div>
+    </footer>
+</div>
+
+</body>
+</html>
