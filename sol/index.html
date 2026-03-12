@@ -179,7 +179,7 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 20px;
-            padding: 20px;
+            padding: 20px 40px;
             background-color: #f8fafc;
             border-radius: 12px;
         }
@@ -188,21 +188,24 @@
             flex: 1;
             text-align: center;
             position: relative;
-            padding: 15px;
+            padding: 20px 15px;
             background: white;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            margin: 0 10px;
+            margin: 0 25px; /* 화살표 공간 확보를 위한 마진 확대 */
         }
 
+        /* 화살표 디자인 강화 */
         .flow-step:not(:last-child)::after {
-            content: "➜";
+            content: "→";
             position: absolute;
-            right: -25px;
+            right: -55px; /* 위치 조정 */
             top: 50%;
             transform: translateY(-50%);
             color: var(--primary-blue);
-            font-weight: bold;
+            font-size: 35px; /* 크기 대폭 확대 */
+            font-weight: 900;
+            opacity: 0.8;
         }
 
         .gantt-bar {
