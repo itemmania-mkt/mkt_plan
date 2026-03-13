@@ -18,24 +18,26 @@
             --white: #ffffff;
         }
 
-        /* 전역 폰트 일치 */
+        /* 기본 스타일 초기화 및 폰트 일치 */
         * {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-            background-color: transparent; /* 특정 태그의 기본 배경색 방지 */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
             line-height: 1.65;
             color: var(--slate-gray);
-            margin: 0;
-            padding: 0;
             background-color: #f1f5f9;
             font-size: 15px;
             letter-spacing: -0.02em;
+            word-break: keep-all;
         }
 
         .report-container {
-            max-width: 1100px; /* 가로폭을 조금 넓혀 한 줄 보기 최적화 */
+            max-width: 1100px; /* 요약문 한 줄 보기를 위해 가로폭 최적화 */
             margin: 40px auto;
             background: var(--white);
             padding: 60px 50px;
@@ -74,7 +76,7 @@
             font-size: 14px;
         }
 
-        /* 요약 박스 스타일 및 2번째 줄 한 줄 보기 설정 */
+        /* 요약 박스: 2번째 줄 한 줄 보기 최적화 */
         .summary-box {
             background-color: var(--bg-slate);
             border-left: 6px solid var(--primary-blue);
@@ -89,14 +91,12 @@
             font-weight: 500;
             line-height: 1.8;
             color: #334155;
-            word-break: keep-all;
         }
 
-        /* 데스크톱에서 2번째 줄을 강제로 한 줄로 표시 */
         @media (min-width: 1024px) {
             .summary-box .line-2 {
                 white-space: nowrap;
-                letter-spacing: -0.04em; /* 자간을 미세하게 좁혀 가독성 유지 */
+                letter-spacing: -0.045em; /* 자간 미세 조정을 통해 한 줄 유지 */
             }
         }
 
@@ -121,6 +121,7 @@
             border-radius: 2px;
         }
 
+        /* KPI 카드 최적화 */
         .kpi-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -134,7 +135,7 @@
             border-radius: 12px;
             text-align: center;
             border: 1px solid var(--border-color);
-            transition: all 0.2s ease;
+            transition: transform 0.2s ease;
         }
 
         .kpi-value {
@@ -158,6 +159,49 @@
             border-radius: 8px;
         }
 
+        /* 모바일 스와이프 기능이 포함된 테이블 컨테이너 */
+        .table-scroll {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 35px;
+            -webkit-overflow-scrolling: touch;
+            background: linear-gradient(to right, white 30%, rgba(255,255,255,0)), 
+                        linear-gradient(to right, rgba(255,255,255,0), white 70%) 0 100%, 
+                        radial-gradient(farthest-side at 0 50%, rgba(0,0,0,.05), rgba(0,0,0,0)), 
+                        radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,.05), rgba(0,0,0,0)) 0 100%;
+            background-repeat: no-repeat;
+            background-color: white;
+            background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+            background-attachment: local, local, scroll, scroll;
+        }
+
+        table {
+            width: 100%;
+            min-width: 850px; /* 모바일에서 표가 깨지지 않게 최소 너비 유지 */
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #f8fafc;
+            padding: 16px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #f1f5f9;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .highlight-cell { font-weight: 700; color: var(--primary-blue); background-color: #fcfdfe; }
+
+        /* 정보 패널 */
         .info-panel {
             background-color: var(--bg-slate);
             border: 1px solid var(--border-color);
@@ -181,36 +225,7 @@
             line-height: 1.5;
         }
 
-        .table-scroll {
-            width: 100%;
-            overflow-x: auto;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 35px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-        }
-
-        th {
-            background-color: #f8fafc;
-            padding: 16px;
-            font-weight: 700;
-            color: var(--primary-blue);
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        td {
-            padding: 16px;
-            border-bottom: 1px solid #f1f5f9;
-            line-height: 1.6;
-        }
-
-        .highlight-cell { font-weight: 700; color: var(--primary-blue); background-color: #fcfdfe; }
-
+        /* PESO 프로세스 */
         .peso-phase-container {
             background-color: #f8fafc;
             padding: 35px;
@@ -218,15 +233,7 @@
             border: 1px solid var(--border-color);
             overflow-x: auto;
             margin-bottom: 40px;
-        }
-
-        .phase-header {
-            font-size: 17px;
-            font-weight: 800;
-            color: #1e293b;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
+            -webkit-overflow-scrolling: touch;
         }
 
         .flow-wrapper {
@@ -256,6 +263,7 @@
             transform: translateY(-50%);
             color: #cbd5e1;
             font-size: 20px;
+            font-weight: 900;
         }
 
         .step-tag {
@@ -264,6 +272,7 @@
             color: var(--secondary-indigo);
             display: block;
             margin-bottom: 6px;
+            text-transform: uppercase;
         }
 
         .step-main {
@@ -278,8 +287,10 @@
             color: var(--light-gray);
             margin-top: 10px;
             display: block;
+            line-height: 1.5;
         }
 
+        /* 전략 그리드 */
         .strategy-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -294,19 +305,7 @@
             background-color: var(--white);
         }
 
-        .card-header {
-            display: flex;
-            align-items: center;
-            font-size: 16.5px;
-            font-weight: 800;
-            color: #1e293b;
-            margin-bottom: 12px;
-        }
-
-        .card-header span { margin-right: 8px; font-size: 20px; }
-
-        .card-content { font-size: 14px; color: #475569; }
-
+        /* 골든타임 그리드 */
         .hourly-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -330,60 +329,15 @@
             font-weight: 800;
         }
 
-        .hourly-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .hourly-list li {
-            font-size: 13.5px;
-            color: #475569;
-            margin-bottom: 8px;
-            padding-left: 12px;
-            position: relative;
-        }
-
-        .hourly-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--light-gray);
-        }
-
-        .roadmap-bar {
-            display: block;
-            padding: 8px 4px;
-            border-radius: 6px;
-            color: white;
-            font-weight: 700;
-            font-size: 12px;
-            text-align: center;
-        }
-        .bg-phase1 { background-color: #3b82f6; } 
-        .bg-phase2 { background-color: #6366f1; } 
-        .bg-phase3 { background-color: #dc2626; } 
-
-        .strategy-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .strategy-list li {
-            margin-bottom: 12px;
-            padding-left: 20px;
-            position: relative;
-            font-size: 14.5px;
-            color: #334155;
-        }
-
-        .strategy-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--primary-blue);
-            font-weight: 900;
+        /* 강조 효과 강제 제거 (노란색 잔상 방지) */
+        .no-highlight {
+            background: transparent !important;
+            background-color: transparent !important;
+            color: inherit !important;
+            box-shadow: none !important;
+            border: none !important;
+            text-shadow: none !important;
+            display: inline-block;
         }
 
         .mobile-hint {
@@ -407,26 +361,30 @@
             font-size: 18px;
             font-weight: 800;
             color: var(--primary-blue);
-            letter-spacing: -0.02em;
         }
 
-        /* 노란색 강조 강제 제거 클래스 */
-        .no-highlight {
-            background: transparent !important;
-            background-color: transparent !important;
-            box-shadow: none !important;
-            border: none !important;
+        /* --- 인쇄 및 PDF 저장 최적화 (@media print) --- */
+        @media print {
+            body { background-color: white !important; -webkit-print-color-adjust: exact; }
+            .report-container { max-width: 100% !important; width: 100% !important; margin: 0 !important; padding: 20px !important; box-shadow: none !important; }
+            .table-scroll { overflow: visible !important; border: none !important; }
+            table { min-width: 100% !important; width: 100% !important; border: 1px solid var(--border-color) !important; }
+            .peso-phase-container { overflow: visible !important; padding: 10px 0 !important; border: none !important; }
+            .flow-wrapper { min-width: 100% !important; width: 100% !important; gap: 10px !important; flex-wrap: wrap !important; }
+            .flow-box { flex: 1 1 30% !important; min-width: 200px !important; margin-bottom: 10px !important; }
+            .flow-box:not(:last-child)::after { display: none !important; }
+            h2 { page-break-after: avoid !important; margin-top: 40px !important; }
+            .card, .hourly-card, .info-panel, .summary-box { page-break-inside: avoid !important; box-shadow: none !important; }
+            .mobile-hint { display: none !important; }
+            .summary-box .line-2 { white-space: normal !important; }
         }
 
         @media (max-width: 768px) {
             .mobile-hint { display: block; }
             .report-container { padding: 30px 20px; margin: 0; border-radius: 0; }
             h1 { font-size: 24px; }
-            .kpi-container { grid-template-columns: 1fr; }
-            .strategy-grid { grid-template-columns: 1fr; }
-            .hourly-grid { grid-template-columns: 1fr; }
-            table { min-width: 700px; }
-            .summary-box .line-2 { white-space: normal; } /* 모바일에서는 줄바꿈 허용 */
+            .kpi-container, .strategy-grid, .hourly-grid { grid-template-columns: 1fr; }
+            .summary-box .line-2 { white-space: normal; }
         }
     </style>
 </head>
@@ -450,10 +408,10 @@
     <div class="kpi-container">
         <div class="kpi-card">
             <span class="kpi-value highlight-red">51% 이상</span>
-            <span class="kpi-label">전체 거래 점유율 (초기 거래 시장 과반 선점)</span>
+            <span class="kpi-label">전체 거래 점유율</span>
             <div class="kpi-details">
                기준: 런칭 초기 거래 시장 선점 목표<br>
-               <span class="no-highlight">산식</span>: (당사 거래액 / 주요 거래 플랫폼 거래액) x 100
+               <span class="no-highlight" style="background: none !important; background-color: transparent !important;">산식</span>: (당사 거래액 / 주요 거래 플랫폼 거래액) x 100
             </div>
         </div>
         <div class="kpi-card">
@@ -461,15 +419,14 @@
             <span class="kpi-label">네이버 검색 가시성 확보</span>
             <div class="kpi-details">
                 기준: 네이버 검색 결과 1페이지 내 자사 콘텐츠 노출 수 기준<br>
-                키워드: 솔 인챈트 시세, 거래, 계정 등 핵심 거래 키워드군<br>
-                목표: 키워드 검색 결과에서 자사 콘텐츠 노출 60% 이상 확보
+                목표: 검색 총량의 과반 이상을 자사 채널로 점유
             </div>
         </div>
         <div class="kpi-card">
             <span class="kpi-value">Top 1~3</span>
             <span class="kpi-label">핵심 키워드 검색 순위</span>
             <div class="kpi-details">
-                키워드: 솔 인챈트 거래, 솔 인챈트 시세, 솔 인챈트 계정 거래,<br>솔 인챈트 아이템 거래, 솔 인챈트 거래 사이트 등<br>
+                기준: 솔 인챈트 시세·거래·계정 등 핵심 키워드<br>
                 목표: 런칭 D-7부터 포털 상단 유지
             </div>
         </div>
@@ -479,7 +436,7 @@
     <div class="info-panel">
         <p class="info-content">
             <strong class="info-title">KPI 설정 기준</strong>
-            현재 리니지라이크 계열 게임 거래 시장에서 아이템매니아의 거래 점유율은 약 50% 미만 수준으로 파악됩니다.<br>
+            현재 리니지라이크 계열 게임 거래 시장에서 자사의 거래 점유율은 50% 미만 수준입니다.<br>
             이에 따라 본 프로젝트에서는 신규 게임 초기 시장 선점을 목표로 기존 수준을 상회하는 전략적 목표치로서 <strong>‘51% 이상 점유율 확보’</strong>를 KPI로 설정하였습니다.<br>
             해당 수치는 시장 규모를 정밀 예측한 결과라기보다는, 신규 게임 런칭 초기 단계에서 아이템매니아가 거래 플랫폼 1위 지위를 명확히 확보하기 위한 목표 지향적 KPI입니다.
         </p>
@@ -501,16 +458,16 @@
                 <tr>
                     <td class="highlight-cell">Segmentation</td>
                     <td>리니지M/W, 오딘 등 하드코어 MMORPG 거래 경험자</td>
-                    <td>실제 고액 거래 이력이 검증된 유저 군집을 대상으로 CRM 타겟 데이터 정밀 추출</td>
+                    <td>실제 고액 거래 이력이 검증된 유저 군집을 대상으로<br>CRM 타겟 데이터 정밀 추출</td>
                 </tr>
                 <tr>
                     <td class="highlight-cell">Targeting</td>
-                    <td>리니지 계열 게임 DNA에 최적화된 고관여 헤비 유저 및 재화 수익화 니즈가 높은 층</td>
-                    <td>불확실한 타겟을 배제하고, 실제 자본 투입 의지가 높은 유저들의 검색 경로 선점</td>
+                    <td>리니지 계열 게임 DNA에 최적화된 고관여 헤비 유저 및<br>재화 수익화 니즈가 높은 층</td>
+                    <td>불확실한 타겟을 배제하고, 실제 자본 투입 의지가 높은<br>유저들의 검색 경로 선점</td>
                 </tr>
                 <tr>
                     <td class="highlight-cell">Positioning</td>
-                    <td><strong>"솔: 인챈트 거래는 아이템매니아"</strong> <br> 플레이와 거래 플랫폼 이용이 자연스럽게 연결되는 인식 구조 형성</td>
+                    <td><strong>"솔: 인챈트 거래는 아이템매니아"</strong> <br> 플레이와 거래 플랫폼 이용이 자연스럽게 연결되는<br>인식 구조 형성</td>
                     <td>압도적인 사고 보상 체계(200%)를 소구하여 안전 거래에 대한 유저 심리적 장벽 제거</td>
                 </tr>
             </tbody>
@@ -576,7 +533,7 @@
             </div>
             <div class="flow-box">
                 <span class="step-tag">Step 3. O/S</span>
-                <span class="step-main no-highlight">커뮤니티 거점화</span>
+                <span class="step-main no-highlight" style="background: none !important; background-color: transparent !important;">커뮤니티 거점화</span>
                 <span class="step-sub">자사 커뮤니티 오픈<br><strong>운영 및 신규 유입 확보 전략</strong><br>거래 홍보 등 집중 관리</span>
             </div>
         </div>
@@ -623,6 +580,12 @@
                     <td><span class="roadmap-bar bg-phase3">실시간 시세 리포트</span></td>
                 </tr>
                 <tr>
+                    <td class="highlight-cell">크리에이터</td>
+                    <td><span class="roadmap-bar bg-phase1">BJ 섭외 및 리스트업</span></td>
+                    <td><span class="roadmap-bar bg-phase2">티징 쇼츠 및 기대감 조성</span></td>
+                    <td><span class="roadmap-bar bg-phase3">라이브 거래 퍼포먼스</span></td>
+                </tr>
+                <tr>
                     <td class="highlight-cell">CRM</td>
                     <td><span class="roadmap-bar bg-phase1">세그먼트 추출</span></td>
                     <td><span class="roadmap-bar bg-phase2">타겟 메시지 발송</span></td>
@@ -638,7 +601,7 @@
                     <td class="highlight-cell">디스코드</td>
                     <td><span class="roadmap-bar bg-phase1">서버 구축 가이드 수립</span></td>
                     <td><span class="roadmap-bar bg-phase2">NRU 획득 전략 실행</span></td>
-                    <td><span class="roadmap-bar bg-phase3">실시간 거래 정보 공유 및 거래 커뮤니티 활성화</span></td>
+                    <td><span class="roadmap-bar bg-phase3">실시간 거래 정보 공유 허브화</span></td>
                 </tr>
             </tbody>
         </table>
@@ -647,9 +610,9 @@
     <div class="info-panel" style="margin-top: -10px;">
         <strong class="info-title">※ 현재 진행 현황</strong>
         <ul class="hourly-list" style="margin-top: 5px;">
-            <li>유튜브 쇼츠 및 블로그 포스팅 3/12 업로드 개시, 콘텐츠 선점 작업 진행 중</li>
-            <li>자사 커뮤니티 사이트 4/1 오픈 예정, CRM 타겟 추출 완료 후 4월 초 발송 예정</li>
-            <li>크리에이터 섭외 컨택리스트 작성 중, 확산기(4/1~) 집행 목표</li>
+            <li style="font-size: 13.5px; font-weight: 500;">유튜브 쇼츠 및 블로그 포스팅 3/12 업로드 개시, 콘텐츠 선점 작업 진행 중</li>
+            <li style="font-size: 13.5px; font-weight: 500;">자사 커뮤니티 사이트 4/1 오픈 예정, CRM 타겟 추출 완료 후 4월 초 발송 예정</li>
+            <li style="font-size: 13.5px; font-weight: 500;">크리에이터 섭외 컨택리스트 작성 중, 확산기(4/1~) 집행 목표</li>
         </ul>
     </div>
 
@@ -678,7 +641,7 @@
                 </tr>
                 <tr>
                     <td class="highlight-cell">거래/시세형</td>
-                    <td>레어 닉네임 거래가, 쌀먹 분석, 서버별 다이아 시세 리포트</td>
+                    <td>레어 닉네임 거래가, 서버별 다이아 시세 리포트</td>
                     <td>구매/판매 의도 높은 고관여 유저 전환 강화 및 매니아 유입 집중</td>
                 </tr>
                 <tr>
@@ -691,34 +654,34 @@
     </div>
 
     <!-- 7. 크리에이터 전략 -->
-    <h2>7. 크리에이터 및 유튜브 실행 전략</h2>
+    <h2>크리에이터 활용 콘텐츠 확산 전략</h2>
     <div class="strategy-grid">
         <div class="card">
-            <div class="card-header"><span>🎥</span> BJ '계정 성장' 라이브 거래</div>
-            <div class="card-content">
+            <div style="display: flex; align-items: center; font-weight: 800; margin-bottom: 12px; font-size: 16.5px;">🎥 크리에이터 '계정 성장' 라이브 거래</div>
+            <div style="font-size: 14px; color: #475569;">
                 BJ가 자신의 성장을 위해 <strong>아이템매니아</strong>에서 재화/계정을 직접 수급하는 퍼포먼스를 노출하여 거래의 신속성과 안전성을 증명합니다.
             </div>
         </div>
         <div class="card">
-            <div class="card-header"><span>💸</span> '캐릭터 선물하기' 수익 챌린지</div>
-            <div class="card-content">
-                부캐 소환 시스템을 활용해 육성한 캐릭터를 현금화하는 과정을 리얼 다큐 제작하여 실질적인 수익 모델 제시, 대량 유입을 유도합니다.
+            <div style="display: flex; align-items: center; font-weight: 800; margin-bottom: 12px; font-size: 16.5px;">💸 '캐릭터 선물하기' 수익 챌린지</div>
+            <div style="font-size: 14px; color: #475569;">
+                부캐 소환 시스템을 활용해 육성한 캐릭터를 현금화하는 과정을 리얼 다큐 제작하여 실질적인 수익 모델 제시로 대량 유입을 유도합니다.
             </div>
         </div>
         <div class="card">
-            <div class="card-header"><span>🏆</span> 전 서버 최초 '신화템 인증' 리워드</div>
-            <div class="card-content">
+            <div style="display: flex; align-items: center; font-weight: 800; margin-bottom: 12px; font-size: 16.5px;">🏆 전 서버 최초 '신화템 인증' 리워드</div>
+            <div style="font-size: 14px; color: #475569;">
                 서버 최초 1티어 득템 유저가 당사 거래 인증 시 보상을 제공하여 '초고가 거래=매니아' 공식을 유저 커뮤니티에 각인시킵니다.
             </div>
         </div>
         <div class="card">
-            <div class="card-header"><span>🔑</span> 유저 참여형 SNS 바이럴</div>
-            <div class="card-content">
+            <div style="display: flex; align-items: center; font-weight: 800; margin-bottom: 12px; font-size: 16.5px;">🔑 유저 참여형 SNS 바이럴</div>
+            <div style="font-size: 14px; color: #475569;">
                 "이주 고민", "BM 토론" 등 참여형 콘텐츠를 배포하여 유저 자발적 언급량을 증대시키고 검색 가시성 목표 달성을 지원합니다.
             </div>
         </div>
     </div>
-    <p style="font-size: 14px; color: var(--light-gray); margin-top: -30px; margin-bottom: 20px;">※ 게임사 운영 정책 사전 검토 후 집행</p>
+    <p style="font-size: 13.5px; color: var(--light-gray); margin-top: -30px; margin-bottom: 20px; font-weight: 500;">※ 게임사 운영 정책 사전 검토 후 집행</p>
 
     <!-- 8. 골든타임 실행안 -->
     <h2>8. 오픈 직후 72시간 골든타임 정밀 실행안</h2>
@@ -765,7 +728,7 @@
             <li><strong>슬로건 각인 전략:</strong> 모든 마케팅 접점에서 <strong>'솔: 인챈트 거래는 아이템매니아'</strong>라는 강력한 공식 각인을 위한 핵심 슬로건 운영</li>
             <li><strong>계정거래 콘텐츠 선점:</strong> 캐릭터 소환 시스템 분석 콘텐츠를 통해 계정/캐릭터 선물하기 트래픽을 선제적으로 확보</li>
             <li><strong>72시간 집중 대응 체계:</strong> 오픈 초기 시장 점유를 위해 마케팅팀 상시 대응 체계로 실시간 시세 리포트 및 현장 대응 실행</li>
-            <li><strong>자사 커뮤니티 허브 운영:</strong> 성공 노하우를 바탕으로 공인 정보 허브를 구축하여 유저 재방문 및 커뮤니티 기반 거래 플랫폼 정착</li>
+            <li><strong>자사 커뮤니티 허브 운영:</strong> 성공 노하우를 바탕으로 공인 정보 허브를 구축하여 유저 락인 및 커뮤니티 기반 거래 플랫폼 정착</li>
         </ul>
     </div>
 
