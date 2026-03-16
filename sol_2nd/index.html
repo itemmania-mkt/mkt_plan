@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>솔: 인챈트 초기 시장 선점 마케팅 실행 운영안</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --blue: #2563eb;
+            --navy: #0f172a;
+            --red: #ef4444;
+            --slate: #64748b;
+            --line: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Pretendard', Arial, sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.6;
+            word-break: keep-all;
+            margin: 0;
+        }
+
+        .report-container {
+            max-width: 980px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .gradient-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #2563eb 100%);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title::before {
+            content: "";
+            width: 6px;
+            height: 28px;
+            background: var(--blue);
+            border-radius: 99px;
+        }
+
+        .highlight-card {
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            border-left: 5px solid var(--red);
+            border-radius: 1rem;
+        }
+
+        .table-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        th {
+            background-color: #f8fafc;
+            color: #475569;
+            font-weight: 800;
+            text-align: left;
+            padding: 14px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: top;
+        }
+
+        .kpi-box {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 1.25rem;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .kpi-box.primary {
+            background: #eff6ff;
+            border-color: #bfdbfe;
+        }
+
+        .kpi-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--blue);
+            line-height: 1.2;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .badge-slate { background: #e2e8f0; color: #475569; }
+        .badge-blue { background: #dbeafe; color: #1d4ed8; }
+
+        .status-badge {
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .status-exec { background: #fee2e2; color: #b91c1c; }
+        .status-moni { background: #f1f5f9; color: #475569; }
+        .status-focus { background: #dbeafe; color: #1d4ed8; }
+
+        .kpi-assumption {
+            margin-top: 16px;
+            padding: 18px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 12px;
+            color: #475569;
+            line-height: 1.8;
+        }
+
+        .kpi-assumption .item {
+            padding-top: 10px;
+            margin-top: 10px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        .kpi-assumption .item:first-of-type {
+            border-top: none;
+            margin-top: 8px;
+            padding-top: 0;
+        }
+
+        @media print {
+            body { background: white; }
+            .report-container { box-shadow: none; max-width: 100%; }
+            .no-print { display: none !important; }
+            .table-scroll { overflow: visible !important; }
+            table, thead, tbody, tr, td, th { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="p-0 sm:p-8">
+
+    <div class="report-container rounded-none sm:rounded-[2rem] overflow-hidden pb-20">
+        <header class="gradient-header p-8 sm:p-14 text-white relative">
+            <div class="flex justify-between items-start mb-8">
+                <span class="text-blue-300 font-bold tracking-[0.2em] text-xs uppercase">Strategic Marketing Integrated Report Final</span>
+                <button onclick="window.print()" class="no-print bg-white/10 hover:bg-white/20 px-5 py-2 rounded-xl text-xs transition-all border border-white/20">
+                    <i class="fas fa-file-pdf mr-2"></i>PDF 저장
+                </button>
+            </div>
+            <h1 class="text-[32px] sm:text-[52px] font-black leading-tight tracking-tight mb-4">
+                솔: 인챈트<br>
+                <span class="text-blue-300 text-[26px] sm:text-[42px]">초기 시장 선점 마케팅 실행 운영안</span>
+            </h1>
+            <p class="text-slate-200 text-sm sm:text-base max-w-2xl leading-relaxed opacity-90">
+                공급 선점, 시세 장악, 거래 전환을 골자로 한 초기 시장 과반 확보 실행안입니다.<br>실행 우선순위, 콘텐츠 점유 구조, 공급망 확보 전략, CRM 전환 전략, 운영 리스크 대응 체계를 통합했습니다.
+            </p>
+            <div class="flex flex-wrap gap-6 text-sm text-slate-300 mt-10 border-t border-white/10 pt-8">
+                <span><i class="far fa-calendar-alt mr-2 text-blue-300"></i>보고일: <strong class="text-white">2026. 03. 15</strong></span>
+                <span><i class="fas fa-rocket mr-2 text-red-400"></i>정식 출시일: <strong class="text-white">2026. 04. 24</strong></span>
+                <span><i class="far fa-user mr-2 text-blue-300"></i>발신: <strong class="text-white">마케팅기획실 마케팅팀</strong></span>
+            </div>
+        </header>
+
+        <main class="p-8 sm:p-14 space-y-20">
+            <section id="summary">
+                <div class="highlight-card p-8 shadow-sm">
+                    <div class="text-xl font-black text-slate-900 mb-4">“공급 선점 → 시세 장악 → 거래 전환” 구조의 초기 시장 선점</div>
+                    <p class="text-[15px] text-slate-600 leading-relaxed mb-6">
+                        단순 인지도 확대가 아닌, 거래 플랫폼의 본질인 <strong>매물 유동성 확보</strong>와 <strong>실시간 정보 우위</strong>를 먼저 선점하는 전략입니다. 쇼케이스 공개 요소인 자유 경제와 스쿼드 시스템을 거래 관점으로 재해석해, 아이템매니아가 런칭 초기에 <strong>압도적 물량</strong>과 <strong>안전 거래 신뢰</strong>를 동시에 확보하는 데 목적이 있습니다.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-center">
+                            <div class="text-[10px] font-black text-blue-600 mb-2 uppercase">Core Path</div>
+                            <div class="text-sm text-slate-700 font-bold">공급자 확보 중심 유동성 선점</div>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-center">
+                            <div class="text-[10px] font-black text-blue-600 mb-2 uppercase">Main Message</div>
+                            <div class="text-sm text-slate-700 font-bold">“솔 인챈트 거래는 매니아”</div>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm text-center">
+                            <div class="text-[10px] font-black text-blue-600 mb-2 uppercase">Target Focus</div>
+                            <div class="text-sm text-slate-700 font-bold">핵심 길드 및 거래 셀러</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="kpi">
+                <h2 class="section-title">01. 캠페인 핵심 성과 지표 (KPI)</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="kpi-box primary">
+                        <div class="text-[11px] font-black text-blue-600 tracking-widest uppercase mb-2">Market Share</div>
+                        <div class="kpi-value">51%+</div>
+                        <p class="text-xs text-slate-500 mt-3 font-medium">런칭 초기 거래 시장 과반 점유 확보 목표</p>
+                    </div>
+                    <div class="kpi-box">
+                        <div class="text-[11px] font-black text-slate-400 tracking-widest uppercase mb-2">Supply 확보</div>
+                        <div class="kpi-value">300명+</div>
+                        <p class="text-xs text-slate-500 mt-2 font-medium">핵심 셀러 확보/ 초기 거래 매물 1,000+</p>
+                    </div>
+                    <div class="kpi-box">
+                        <div class="text-[11px] font-black text-slate-400 tracking-widest uppercase mb-2">SEO Visibility</div>
+                        <div class="kpi-value">60%↑</div>
+                        <p class="text-xs text-slate-500 mt-3 font-medium">핵심 거래 키워드 기준 검색 1페이지 점유율</p>
+                    </div>
+                </div>
+
+                <div class="table-scroll rounded-2xl border border-slate-200 mt-8">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="18%">구분</th>
+                                <th width="38%">측정 지표</th>
+                                <th width="44%">측정 기준 및 목표값</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>마켓플레이스</b></td>
+                                <td>서버별 최초 등록 상품 수, 구매전환율(CVR), 거래 GMV, 거래 점유율</td>
+                                <td>런칭 초기 솔 인챈트 거래 시장 점유율 51% 확보 / 핵심 서버 초기 매물 100건 이상 확보 / 초기 거래 GMV 성장 기반 확보</td>
+                            </tr>
+                            <tr>
+                                <td><b>브랜드/유입</b></td>
+                                <td>핵심 키워드 Top 1~3 순위, 자연유입 세션, 랜딩 CTR, 검색 가시성</td>
+                                <td>‘솔 인챈트 시세·거래·계정’ 등 핵심 키워드군 기준 네이버·구글 1페이지 점유 확대</td>
+                            </tr>
+                            <tr>
+                                <td><b>CRM</b></td>
+                                <td>DM/LMS 반응률, 쿠폰 사용 전환율, 재방문 유입 비중</td>
+                                <td>DM/LMS 반응률 0.8~1% 목표 / 쿠폰 기반 거래 전환 유도 / 재방문 유입 비중 확대</td>
+                            </tr>
+                            <tr>
+                                <td><b>공급망</b></td>
+                                <td>사전 모집 셀러 수, 서버별 대표 매물 수, 길드·대량 거래 확보 수</td>
+                                <td>사전 셀러 300명+ 확보 / 인기 서버 전담 운영 / 오픈 초기 대형 매물 선점</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="kpi-assumption">
+                    <b class="text-slate-700">※ KPI 산정 기준</b>
+                    <div class="item">
+                        <b class="text-slate-700">① Market Share 51%</b><br>
+                        신규 MMORPG 런칭 초기 거래 시장은 공급 확보 여부에 따라 플랫폼 점유율이 빠르게 형성되는 구조입니다.<br>
+초기 매물 확보와 거래 선점 전략을 통해 거래 기준 가격과 매물 집중도를 확보하는 것이 핵심이며, 플랫폼 시장에서는 과반 점유율 확보 시 거래가 해당 플랫폼으로 집중되는 경향이 나타납니다. 따라서 초기 거래 시장의 주도 플랫폼 확보 기준을 ‘과반 점유 플랫폼’으로 정의하고 KPI를 51%로 설정했습니다.<br><br>
+※ Market Share 측정 기준<br>
+초기 거래 시장 점유율은 주요 거래 플랫폼(아이템베이, 바로템 등) 대비 거래 등록 건수 및 거래액 추정 데이터를 기반으로 내부 모니터링 지표로 산정합니다.
+                    </div>
+                    <div class="item">
+                        <b class="text-slate-700">② Supply 확보 (핵심 셀러 300명 / 초기 거래 매물 1,000건)</b><br>
+                        기존 MMORPG 거래 데이터 분석 결과, 게임별 유입 대비 실거래 참여 전환율은 약 4~26% 범위로 나타나며 평균 약 10% 수준의 거래 전환율이 형성되는 것으로 확인됩니다.<br>이를 기준으로 초기 관심 유저 약 10,000명 유입 시 약 1,000명의 실질적인 거래 참여자가 형성될 것으로 예상되며, 이 중 약 30%가 아이템을 공급하는 판매자로 전환되는 구조를 기반으로 핵심 셀러 300명 확보를 목표 KPI로 설정했습니다.<br>또한 셀러당 평균 3.3건의 매물 등록을 유도하여 런칭 당일 초기 거래 매물 1,000건 이상 확보를 목표로 합니다.
+                    </div>
+                    <div class="item">
+                        <b class="text-slate-700">③ CRM (DM/LMS)</b><br>
+                        현재 DM 오픈율은 약 0.4% 내외 수준으로 확인되고 있습니다. 타겟 정교화와 혜택 메시지 개선을 통해 런칭 캠페인 기간 동안 DM/LMS 반응률 0.8~1% 수준까지 단계적 개선을 목표로 설정했습니다.
+                    </div>
+                    <div class="item">
+                        <b class="text-slate-700">④ KPI 운영 방향</b><br>
+본 KPI는 런칭 초기 거래 시장의 형성 구조(공급 확보 → 거래 발생 → 시세 형성 → 검색 유입 확대)를 기준으로 설정되었습니다. 
+초기 매물 확보와 거래 활성화를 통해 거래 기준 가격을 형성하고 거래 시장 점유율을 빠르게 확보하는 것을 핵심 목표로 합니다.<br>
+MMORPG 런칭 초기에는 주요 거래 플랫폼 간 매물 확보와 거래 유동성 선점 경쟁이 발생하는 구조입니다. <br>초기 거래 유동성 확보를 위해 셀러 확보 및 거래 활성화 정책을 플랫폼 운영 정책(수수료, 매물 노출 등)과 연계하여 추진하며, 
+마케팅 캠페인은 해당 거래 흐름을 확대하여 거래 시장 점유율 확보로 연결되는 방향으로 운영합니다.
+                    </div>
+                </div>
+            </section>
+
+            <section id="stp">
+                <h2 class="section-title">02. 타겟 전략(STP) 및 브랜드 포지셔닝</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="text-blue-600 font-black text-[10px] uppercase mb-3">Segmentation</div>
+                        <div class="text-slate-900 font-bold mb-2">MMORPG 핵심유저</div>
+                        <p class="text-xs text-slate-500">리니지M/W, 오딘 등 고액 거래 이력이 검증된 MMORPG 헤비 유저군</p>
+                    </div>
+                    <div class="p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="text-blue-600 font-black text-[10px] uppercase mb-3">Targeting</div>
+                        <div class="text-slate-900 font-bold mb-2">핵심 길드 및 거래 셀러</div>
+                        <p class="text-xs text-slate-500">재화 수익화 니즈가 높고 자본 투입 의지가 강한 핵심 세력 및 길드</p>
+                    </div>
+                    <div class="p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="text-blue-600 font-black text-[10px] uppercase mb-3">Positioning</div>
+                        <div class="text-slate-900 font-bold mb-2">No.1 거래 허브</div>
+                        <p class="text-xs text-slate-500">“솔: 인챈트 거래는 아이템매니아” 안전 보상과 압도적 물량의 결합</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="why-itemmania">
+                <h2 class="section-title">03. 아이템매니아 선택 이유</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="font-bold text-slate-900 mb-2">시세 허브</div>
+                        <p class="text-xs text-slate-500">유저가 ‘솔 인챈트 시세’를 검색할 때 가장 먼저 확인하는 정보 허브로 자리잡아 가격 판단과 거래 탐색의 출발점을 선점합니다.</p>
+                    </div>
+                    <div class="p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="font-bold text-slate-900 mb-2">첫 거래 안전장치</div>
+                        <p class="text-xs text-slate-500">처음 거래하는 유저도 이해하기 쉬운 안전 거래 가이드와 체크리스트를 제공해 진입장벽과 불안을 낮춥니다.</p>
+                    </div>
+                    <div class="p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="font-bold text-slate-900 mb-2">공급 확보</div>
+                        <p class="text-xs text-slate-500">핵심 서버 셀러와 초기 매물을 선제적으로 확보해 거래 가능한 물량 자체를 경쟁 우위로 전환합니다.</p>
+                    </div>
+                    <div class="p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="font-bold text-slate-900 mb-2">거래 동선 최소화</div>
+                        <p class="text-xs text-slate-500">검색 → 시세 확인 → 상품 진입 → 구매/등록까지 이어지는 흐름을 단순화해 실제 전환 확률을 높입니다.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="aarrr">
+                <h2 class="section-title">04. 유입 및 전환 구조 (AARRR)</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="p-5 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="badge badge-slate mb-3">Acquisition</div>
+                        <div class="font-bold text-slate-900 mb-2">탐색 수요 유입</div>
+                        <p class="text-xs text-slate-500">SEO 콘텐츠, 쇼케이스 요약, 셀러 모집 캠페인, 커뮤니티 이슈 점유로 초기 관심층 유입</p>
+                    </div>
+                    <div class="p-5 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="badge badge-slate mb-3">Activation</div>
+                        <div class="font-bold text-slate-900 mb-2">거래 허브 정착</div>
+                        <p class="text-xs text-slate-500">시세 허브 페이지, 서버별 거래 가이드, 실시간 정보 구조로 초기 이용 동선 고정</p>
+                    </div>
+                    <div class="p-5 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="badge badge-blue mb-3">Revenue</div>
+                        <div class="font-bold text-slate-900 mb-2">실거래 전환</div>
+                        <p class="text-xs text-slate-500">첫 거래 쿠폰, 길드 거래 인센티브, 희귀 매물 노출 강화로 구매·판매 전환 확대</p>
+                    </div>
+                    <div class="p-5 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="badge badge-blue mb-3">Retention</div>
+                        <div class="font-bold text-slate-900 mb-2">재방문·확산</div>
+                        <p class="text-xs text-slate-500">시세 알림, 득템 인증, 우수 셀러 보상 체계로 재방문과 자발적 확산 구조 형성</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="roadmap">
+                <h2 class="section-title">05. 통합 로드맵 (PESO 모델 기반)</h2>
+                <div class="table-scroll rounded-2xl border border-slate-200">
+                    <table>
+                        <thead>
+                            <tr class="bg-slate-50">
+                                <th>채널</th>
+                                <th>~ 03. 31 (준비기)</th>
+                                <th>04. 01 ~ 04. 23 (확산기)</th>
+                                <th>04. 24 ~ (런칭 대응)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-xs">
+                            <tr>
+                                <td class="font-bold bg-slate-50/30">자사 커뮤니티</td>
+                                <td>게시판 및 셀러 등록 페이지</td>
+                                <td>사전 알림 및 정보 구조 세팅</td>
+                                <td class="bg-blue-50 text-blue-700 font-bold">서버 현황 정보 허브화</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold bg-slate-50/30">자사 유튜브 채널</td>
+                                <td>브랜드 숏폼 및 티저 기획</td>
+                                <td>공공 거래 안전 캠페인 영상</td>
+                                <td class="bg-blue-50 text-blue-700 font-bold">실시간 득템 사례 하이라이트</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold bg-slate-50/30">협업 크리에이터</td>
+                                <td>BJ/유튜버 30인 섭외 및 조율</td>
+                                <td>선행 리뷰 및 기대평 바이럴</td>
+                                <td class="bg-blue-50 text-blue-700 font-bold">재화 수급 퍼포먼스 라이브</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold bg-slate-50/30">커뮤니티 (인벤/디시)</td>
+                                <td>이슈 모니터링 및 키워드 수집</td>
+                                <td>정보형 빌드업 포스팅/여론 형성</td>
+                                <td class="bg-blue-50 text-blue-700 font-bold">득템 인증 유도 및 실시간 바이럴</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold bg-slate-50/30">SEO / 블로그</td>
+                                <td>쇼케이스 분석 포스팅</td>
+                                <td>계정거래·패키지 효율 가이드</td>
+                                <td class="bg-blue-50 text-blue-700 font-bold">실시간 시세 리포트 운영</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold bg-slate-50/30">공급망 (Seller)</td>
+                                <td>파워 셀러 리스트업</td>
+                                <td>사전 셀러 모집 캠페인</td>
+                                <td class="bg-blue-50 text-blue-700 font-bold">핵심 매물 선점 확보</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold bg-slate-50/30">CRM / 광고</td>
+                                <td>세그먼트 정밀 추출</td>
+                                <td>타겟 메시지·쿠폰 설계</td>
+                                <td class="bg-blue-50 text-blue-700 font-bold">오픈 당일 집중 푸시 및 리마인드</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold bg-slate-50/30">PC방 / DA</td>
+                                <td>인벤토리 협의 및 지면 기획</td>
+                                <td>소재 제작 및 세팅</td>
+                                <td class="bg-blue-50 text-blue-700 font-bold">메인 지면 광고 집중 노출</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold bg-slate-50/30">디스코드</td>
+                                <td>서버 구축 방향 수립</td>
+                                <td>초기 커뮤니티 활성화 전략</td>
+                                <td class="bg-indigo-50 text-indigo-700 font-bold">실시간 거래 정보 허브</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="landing-structure">
+                <h2 class="section-title">06. 거래 의도 페이지 구조</h2>
+                <div class="p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-600">
+                        <div>• 솔 인챈트 거래 메인 허브</div>
+                        <div>• 서버별 시세 페이지</div>
+                        <div>• 재화 거래 페이지</div>
+                        <div>• 아이템 거래 페이지</div>
+                        <div>• 계정/캐릭터 거래 페이지</div>
+                        <div>• 초보 거래 가이드</div>
+                        <div>• 안전거래 FAQ</div>
+                        <div>• 오픈 직후 실시간 리포트 페이지</div>
+                    </div>
+                    <p class="mt-4 text-sm text-slate-600">
+                        블로그 및 정보형 콘텐츠는 위 거래 의도 페이지를 보조하는 역할로 운영하며, 실제 전환은 허브형 랜딩 구조에서 발생하도록 설계합니다.
+                    </p>
+                </div>
+            </section>
+
+            <section id="supply" class="bg-slate-900 rounded-[2rem] p-8 sm:p-12 text-white shadow-xl">
+                <h3 class="text-2xl font-black mb-6 flex items-center text-blue-400">
+                    <i class="fas fa-boxes mr-3"></i>07. 공급망(Supply) 확보 및 길드 전략
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
+                        <div class="font-bold text-blue-300 mb-2">파워 셀러 사전 모집</div>
+                        <p class="text-xs text-slate-400 leading-relaxed">리니지M·오딘 고액 셀러 대상 선점 혜택, 판매 등록 우선 노출, 광고권 지급을 통해 초기 물량 중심축 확보</p>
+                    </div>
+                    <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
+                        <div class="font-bold text-blue-300 mb-2">최초 판매 인센티브</div>
+                        <p class="text-xs text-slate-400 leading-relaxed">첫 판매 성공 셀러 대상 수수료 환급 및 리워드 지급으로 신규 공급자 진입 허들 완화</p>
+                    </div>
+                    <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
+                        <div class="font-bold text-blue-300 mb-2">핵심 서버 전담 운영</div>
+                        <p class="text-xs text-slate-400 leading-relaxed">주요 서버별 매물 현황 모니터링과 공급 부족 구간 즉시 보완으로 시세 주도권 유지</p>
+                    </div>
+                    <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
+                        <div class="font-bold text-blue-300 mb-2">길드 정착 지원 패키지</div>
+                        <p class="text-xs text-slate-400 leading-relaxed">거래 인증 길드 대상 정모 지원 및 대규모 거래 보상으로 큰손 유저 그룹 장기 락인</p>
+                    </div>
+                </div>
+                <p class="mt-6 text-sm text-slate-300 leading-relaxed">
+                    MMORPG 거래 시장은 런칭 초기 공급 확보 여부에 따라 거래 플랫폼 점유율이 빠르게 형성되는 특성이 있습니다. 따라서 핵심 서버 매물 확보와 셀러 공급을 선제적으로 확보하여 거래 기준 가격을 선점하고 초기 거래 시장 점유율을 빠르게 확대하는 전략을 적용합니다.
+                </p>
+            </section>
+
+            <section id="seo-strategy">
+                <h2 class="section-title">08. 콘텐츠·SEO 확산 전략</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="border border-slate-200 rounded-2xl bg-white overflow-hidden shadow-sm">
+                        <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 font-bold text-slate-900">콘텐츠 4대 핵심 축 운영</div>
+                        <div class="p-6 space-y-6">
+                            <div class="flex gap-4">
+                                <div class="badge badge-slate h-6 shrink-0 mt-1">정보형</div>
+                                <div class="text-xs text-slate-600 leading-relaxed">
+                                    <strong class="text-slate-900 block mb-1">탐색 기대 유입 확보</strong>
+                                    쇼케이스 요약, 직업 추천, 스쿼드 시스템 분석, 무과금·소과금 효율 분석 등으로 런칭 전 기대 수요 독점
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="badge badge-slate h-6 shrink-0 mt-1">비교형</div>
+                                <div class="text-xs text-slate-600 leading-relaxed">
+                                    <strong class="text-slate-900 block mb-1">기존 MMORPG 유저 이동 수요 흡수</strong>
+                                    솔: 인챈트 vs 리니지M·오딘 BM 분석, 과금 효율 비교를 통해 수익성 판단 유저의 이동 명분 제공
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="badge badge-blue h-6 shrink-0 mt-1">시세형</div>
+                                <div class="text-xs text-slate-600 leading-relaxed">
+                                    <strong class="text-slate-900 block mb-1">고관여 유저 전환 강화</strong>
+                                    서버별 다이아 시세 리포트, 희귀 닉네임 거래가, 초기 거래량 흐름 등 구매·판매 의도가 직접적인 유저 집중 타겟
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="badge badge-blue h-6 shrink-0 mt-1">계정형</div>
+                                <div class="text-xs text-slate-600 leading-relaxed">
+                                    <strong class="text-slate-900 block mb-1">신규 시스템 선점</strong>
+                                    캐릭터 선물하기 안전 가이드, 캐릭터 시세 산정 기준 등 신규 거래 트래픽 선제 확보
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="p-6 border border-blue-100 rounded-2xl bg-blue-50/50">
+                            <h4 class="font-bold text-blue-700 mb-3"><i class="fas fa-bullseye mr-2"></i>SEO 실행 전략 포인트</h4>
+                            <ul class="space-y-3 text-xs text-blue-900/80 leading-relaxed list-disc pl-4">
+                                <li><strong>허브 랜딩 구조:</strong> 시세·거래·가이드가 연결된 솔 인챈트 허브 페이지 운영으로 이탈 최소화</li>
+                                <li><strong>Contextual Occupation:</strong> 패키지 효율-거래가-시세로 이어지는 유저 탐색 문맥 전체 점유</li>
+                                <li><strong>AI Overview 대응:</strong> 첫 문단 핵심 요약, 비교표 구조, FAQ형 정보 배치로 AI 추천 영역 대응</li>
+                                <li><strong>정보 우위 선점:</strong> 서버 오픈 직후 단기 단위 시세 업데이트로 시세 확인=매니아 공식 각인</li>
+                            </ul>
+                        </div>
+                        <div class="p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                            <h4 class="font-bold text-slate-900 mb-3"><i class="fas fa-tag mr-2 text-slate-400"></i>SEO 최적화 태그 (Tistory / Blog)</h4>
+                            <div class="text-[11px] text-slate-500 bg-slate-50 p-3 rounded-lg border border-dashed border-slate-200">
+                                솔인챈트시세, 솔인챈트거래, 솔인챈트아이템, 솔인챈트계정거래, 솔인챈트캐릭터선물하기, 솔인챈트다이아시세, 솔인챈트무과금, 아이템매니아솔인챈트, 솔인챈트BM분석, 솔인챈트서버추천
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="crm">
+                <h2 class="section-title">09. CRM 전환 전략</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="font-bold text-slate-900 mb-2">런칭 전</div>
+                        <p class="text-xs text-slate-500">사전 관심 유저 및 기존 거래 유저 세그먼트를 추출하고 알림 메시지·쿠폰 구조를 설계</p>
+                    </div>
+                    <div class="p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="font-bold text-slate-900 mb-2">런칭 당일</div>
+                        <p class="text-xs text-slate-500">오픈 알림 LMS, 첫 거래 유도 쿠폰, 핵심 서버 중심 메시지 발송으로 초기 거래 전환 극대화</p>
+                    </div>
+                    <div class="p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="font-bold text-slate-900 mb-2">런칭 이후</div>
+                        <p class="text-xs text-slate-500">시세 알림, 쿠폰 리마인드, 재방문 메시지 자동화로 거래 재진입 및 반복 이용 유도</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="creator">
+                <h2 class="section-title">10. 크리에이터 및 바이럴 확산 전략</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex gap-4 p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="bg-red-50 text-red-500 p-4 h-14 w-14 rounded-2xl flex items-center justify-center shrink-0"><i class="fas fa-video text-xl"></i></div>
+                        <div>
+                            <div class="font-bold text-slate-900 mb-2">성장형 라이브 퍼포먼스</div>
+                            <p class="text-xs text-slate-500 leading-relaxed">BJ가 재화를 매니아에서 수급해 스쿼드를 무장하는 과정을 노출하여 거래의 신속성과 안전성 실시간 증명</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="bg-blue-50 text-blue-500 p-4 h-14 w-14 rounded-2xl flex items-center justify-center shrink-0"><i class="fas fa-search-dollar text-xl"></i></div>
+                        <div>
+                            <div class="font-bold text-slate-900 mb-2">경제 구조 심층 분석</div>
+                            <p class="text-xs text-slate-500 leading-relaxed">24시간 무접속 플레이에 따른 게임 경제 변화와 과금 효율을 데이터로 입증하여 수익형 유저 대량 유입</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="bg-amber-50 text-amber-500 p-4 h-14 w-14 rounded-2xl flex items-center justify-center shrink-0"><i class="fas fa-trophy text-xl"></i></div>
+                        <div>
+                            <div class="font-bold text-slate-900 mb-2">득템 인증 리워드</div>
+                            <p class="text-xs text-slate-500 leading-relaxed">희귀 아이템 거래 및 고가 거래 사례를 인증형 콘텐츠로 확산해 고가치 거래 이미지를 강화</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="bg-green-50 text-green-500 p-4 h-14 w-14 rounded-2xl flex items-center justify-center shrink-0"><i class="fas fa-users text-xl"></i></div>
+                        <div>
+                            <div class="font-bold text-slate-900 mb-2">길드 단위 거래 지원</div>
+                            <p class="text-xs text-slate-500 leading-relaxed">길드 단위 재화 수급과 대규모 거래 흐름을 지원해 큰손 그룹의 플랫폼 의존도를 조기에 높임</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="dday">
+                <h2 class="section-title">11. 런칭 초기 대응 실행 계획 (D‑Day ~ D+5)</h2>
+                <p class="text-sm text-slate-600 mb-6">
+                    게임 런칭 초기 거래 시장은 오픈 직후 공급과 거래가 집중되는 특성이 있습니다. 따라서 런칭 직후 D+5 기간 동안 핵심 서버 매물 확보, 거래 활성화, 검색 노출 확보를 집중 실행하여 초기 거래 시장 점유율을 빠르게 확보하는 것을 목표로 합니다.
+                </p>
+                <div class="table-scroll rounded-2xl border border-slate-200 shadow-sm">
+                    <table>
+                        <thead>
+                            <tr class="bg-slate-100">
+                                <th width="14%" class="text-center">날짜</th>
+                                <th width="10%" class="text-center">상태</th>
+                                <th width="31%">마케팅 및 CRM 액션</th>
+                                <th width="31%">운영 및 매물 관리</th>
+                                <th width="14%">목적</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-xs">
+                            <tr>
+                                <td class="bg-slate-50 text-center font-bold">04/24 (금)</td>
+                                <td class="text-center"><span class="status-badge status-exec">D-Day</span></td>
+                                <td>카테고리 오픈, 사전 유저 LMS 발송, 커뮤니티 이슈 점유, 핵심 키워드 상단 노출 집중</td>
+                                <td class="border-l font-semibold">사전 셀러 매물 즉시 등록 유도, 실시간 등록량 기반 시세 모니터링 가동</td>
+                                <td>초기 거래 시장 형성</td>
+                            </tr>
+                            <tr class="bg-slate-50/50">
+                                <td class="bg-slate-100 text-center text-slate-400">04/25~26 (토/일)</td>
+                                <td class="text-center"><span class="status-badge status-moni">모니터링</span></td>
+                                <td>시세 알림 앱푸시 자동화, 예약 쿠폰 리마인드, 주말 반응 수집</td>
+                                <td class="border-l">거래 트래픽 모니터링, 비정상 거래 계정 필터링 자동화 시스템 운영</td>
+                                <td>시장 반응 확인</td>
+                            </tr>
+                            <tr class="bg-blue-50/30">
+                                <td class="bg-blue-100/30 text-center font-bold text-blue-900">04/27 (월)</td>
+                                <td class="text-center"><span class="status-badge status-focus">D+3</span></td>
+                                <td class="font-semibold text-blue-800">주말 누적 데이터 기반 시세 리포트 배포, 직장인 타겟 월요 출근 LMS 발송</td>
+                                <td class="border-l font-semibold text-blue-800">매물 소진 서버 셀러 긴급 인센티브, 길드 보상 1차 정산 및 리워드 지급</td>
+                                <td>유입 확대</td>
+                            </tr>
+                            <tr>
+                                <td class="bg-slate-50 text-center font-bold">04/28 (화)</td>
+                                <td class="text-center"><span class="status-badge status-exec">D+4</span></td>
+                                <td>거래 가이드 콘텐츠 확산, 비교형 포스팅 강화, 커뮤니티 바이럴 확대</td>
+                                <td class="border-l">부족 서버 매물 보강, 고가 거래 사례 노출, 인기 카테고리 정렬 보정</td>
+                                <td>거래 활성화</td>
+                            </tr>
+                            <tr>
+                                <td class="bg-slate-50 text-center font-bold">04/29 (수)</td>
+                                <td class="text-center"><span class="status-badge status-exec">D+5</span></td>
+                                <td>초기 유입·전환 성과 점검, 추가 캠페인 우선순위 재설정, 2차 확산안 확정</td>
+                                <td class="border-l">거래량·매물 수·시세 흐름 분석, 공급망 재배치 및 집중 서버 재선정</td>
+                                <td>시장 점유율 점검</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-xl text-[11px] text-amber-800 leading-relaxed italic">
+                    * 정식 출시가 금요일인 점을 고려하여 금·월·화·수 4일에 전사 마케팅 화력을 집중하고, 주말은 시스템 기반 자동화와 모니터링 중심으로 운영 효율을 최적화함.
+                </div>
+            </section>
+
+            <section id="execution">
+                <h2 class="section-title">12. 실행 운영 체계</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="font-bold text-slate-900 mb-4">핵심 운영 페이지 및 콘텐츠</div>
+                        <ul class="space-y-2 text-xs text-slate-600 list-disc pl-4">
+                            <li>거래 허브 페이지</li>
+                            <li>서버별 시세 페이지</li>
+                            <li>실시간 시세 리포트</li>
+                            <li>초보 거래 가이드 / FAQ</li>
+                            <li>DM/LMS/푸시 소재</li>
+                            <li>크리에이터 협업용 정보형 소재</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="font-bold text-slate-900 mb-4">운영 우선순위</div>
+                        <ul class="space-y-2 text-xs text-slate-600 list-disc pl-4">
+                            <li>핵심 서버 공급 확보</li>
+                            <li>시세 정보 업데이트</li>
+                            <li>검색 노출 점검</li>
+                            <li>CRM 발송 및 반응 확인</li>
+                            <li>부족 서버 매물 현황 점검 및 공급 보완 대응</li>
+                            <li>D+5 성과 점검 및 2차 확산안 확정</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="status">
+                <h2 class="section-title">13. 현재 진행 현황 및 운영 리스크 가이드</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+                    <div class="p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="font-bold text-slate-900 mb-4 flex items-center"><i class="fas fa-tasks mr-2 text-blue-600"></i>현재 진행 현황</div>
+                        <ul class="space-y-3 text-slate-600 list-disc pl-4">
+                            <li>유튜브 쇼츠 및 블로그 포스팅 1차 업로드 완료, 주요 키워드 점유 작업 진행</li>
+                            <li>자사 커뮤니티 오픈 전 정보 허브 구조 설계 및 DB 연동 점검 진행</li>
+                            <li>크리에이터 협업 리스트 확정 및 런칭 라이브 타임테이블 조율</li>
+                            <li>공급망 확보를 위한 파워 셀러 300인 리스트업 및 인센티브안 확정</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 border border-slate-200 rounded-2xl bg-white shadow-sm">
+                        <div class="font-bold text-slate-900 mb-4 flex items-center"><i class="fas fa-shield-alt mr-2 text-red-600"></i>리스크 및 운영 가이드</div>
+                        <div class="space-y-4">
+                            <div class="pb-3 border-b border-slate-100">
+                                <div class="font-bold text-slate-800 mb-1">표현 리스크 통제</div>
+                                <p class="text-slate-500 leading-relaxed italic">‘현금화’ 표현 지양 → ‘성장 효율’, ‘자유 경제 활용’ 중심 워딩 관리로 정책 리스크 차단</p>
+                            </div>
+                            <div class="pb-3 border-b border-slate-100">
+                                <div class="font-bold text-slate-800 mb-1">안전 거래 강화</div>
+                                <p class="text-slate-500 leading-relaxed">캐릭터 선물하기 전용 체크리스트 및 사고 대응 TF 상시 운영으로 안전 브랜드 인지 강화</p>
+                            </div>
+                            <div>
+                                <div class="font-bold text-slate-800 mb-1">주말 운영 공백 최소화</div>
+                                <p class="text-slate-500 leading-relaxed">주말은 자동 CRM, 거래 모니터링, 이상 거래 필터링 중심으로 운영해 실무 공백에 따른 리스크를 낮춤</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="text-center pt-10 border-t border-slate-100">
+                <div class="bg-slate-950 text-white p-12 rounded-[2.5rem] shadow-2xl overflow-hidden relative">
+                    <div class="relative z-10">
+                        <p class="text-slate-300 text-base sm:text-lg font-semibold leading-relaxed">
+                            본 마케팅 운영안은 게임 출시 초기 거래 시장 선점을 위한 전략 방향을 기준으로 수립되었습니다.<br>
+                            실제 운영 단계에서는 시장 상황 및 거래 데이터에 따라 세부 실행 전략이 탄력적으로 운영될 예정입니다.
+                        </p>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 bg-slate-900 text-white w-12 h-12 rounded-full shadow-2xl no-print flex items-center justify-center hover:bg-blue-600 transition-all">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</body>
+</html>
+<!-- Tags: 솔인챈트마케팅,아이템매니아전략,SEO전략,MMORPG런칭,공급망선점,시세리포트,4월24일출시,마케팅KPI,길드마케팅 -->
