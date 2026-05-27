@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>아이템매니아 X 엔츠소프트 제휴 이벤트 진행안</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 32px;
+    background: #f4f6f8;
+    color: #1f2937;
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.65;
+  }
+  .page {
+    max-width: 1040px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+  }
+  .hero {
+    padding: 42px 48px 36px;
+    background: linear-gradient(135deg, #111827, #263447);
+    color: #fff;
+  }
+  .label {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.14);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  h1 {
+    margin: 0;
+    font-size: 32px;
+    line-height: 1.35;
+    letter-spacing: -0.04em;
+  }
+  .subtitle {
+    margin: 14px 0 0;
+    color: rgba(255,255,255,0.78);
+    font-size: 16px;
+  }
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding: 20px 48px;
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .meta div {
+    padding: 14px 16px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+  }
+  .meta strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #64748b;
+    font-size: 12px;
+  }
+  .meta span {
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .content {
+    padding: 36px 48px 48px;
+  }
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 34px;
+  }
+  .kpi {
+    padding: 20px;
+    border-radius: 18px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+  }
+  .kpi .title {
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .kpi .value {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+  }
+  .section {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #e5e7eb;
+  }
+  h2 {
+    margin: 0 0 16px;
+    font-size: 22px;
+    letter-spacing: -0.035em;
+  }
+  h3 {
+    margin: 22px 0 10px;
+    font-size: 17px;
+    letter-spacing: -0.02em;
+  }
+  ul { margin: 0; padding-left: 22px; }
+  li { margin: 5px 0; }
+  .card {
+    padding: 22px;
+    border-radius: 18px;
+    background: #fbfdff;
+    border: 1px solid #e5e7eb;
+    margin: 14px 0;
+  }
+  .benefit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .benefit {
+    padding: 22px;
+    border-radius: 18px;
+    border: 1px solid #dbeafe;
+    background: #f8fbff;
+  }
+  .benefit .badge {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #e0edff;
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .benefit .main {
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+  }
+  .note {
+    margin-top: 12px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #9a3412;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .sms {
+    white-space: pre-wrap;
+    padding: 22px;
+    border-radius: 18px;
+    background: #111827;
+    color: #f9fafb;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: auto;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .decision {
+    margin-top: 28px;
+    padding: 22px;
+    border-radius: 18px;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+  }
+  .footer {
+    padding: 24px 48px;
+    border-top: 1px solid #e5e7eb;
+    color: #64748b;
+    font-size: 13px;
+    background: #f9fafb;
+  }
+  @media (max-width: 820px) {
+    body { padding: 14px; }
+    .hero, .content, .footer { padding-left: 22px; padding-right: 22px; }
+    .meta, .kpi-grid, .benefit-grid, .two-col {
+      grid-template-columns: 1fr;
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+    h1 { font-size: 25px; }
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .page { box-shadow: none; border-radius: 0; }
+    .section, .card, .benefit, .decision { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="label">제휴 이벤트 진행안</div>
+      <h1>아이템매니아 X 엔츠소프트<br />제휴 이벤트</h1>
+      <p class="subtitle">매크로플러스 활용을 통한 판매자 등록 편의성 강화 및 실제 이용 전환 검증</p>
+    </section>
+
+    <section class="meta">
+      <div><strong>보고일</strong><span>2026-05-22</span></div>
+      <div><strong>부서(팀)</strong><span>마케팅팀</span></div>
+      <div><strong>작성자</strong><span>이효은</span></div>
+      <div><strong>진행 기간</strong><span>2026.05.28~05.30</span></div>
+    </section>
+
+    <section class="content">
+      <div class="kpi-grid">
+        <div class="kpi"><div class="title">발송 대상 기준</div><div class="value">101건 이상</div></div>
+        <div class="kpi"><div class="title">최종 대상자 수</div><div class="value">8,182명</div></div>
+        <div class="kpi"><div class="title">이벤트 기간</div><div class="value">3일간</div></div>
+        <div class="kpi"><div class="title">기본 혜택</div><div class="value">1개월 무료</div></div>
+      </div>
+
+      <section class="section">
+        <h2>1. 목적</h2>
+        <ul>
+          <li>반복 상품 등록 판매자의 등록 편의성 강화</li>
+          <li>매크로플러스 활용을 통한 매니아 + 베이 동시등록 지원</li>
+          <li>실제 사용 활성화 및 제휴 효과 검증</li>
+          <li>판매 활동 회원 대상 실제 이용 반응 및 전환 효과 검증</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>2. 이벤트 개요</h2>
+        <div class="card">
+          <ul>
+            <li><strong>이벤트명:</strong> 아이템매니아 X 엔츠소프트 제휴 이벤트</li>
+            <li><strong>방식:</strong> LMS 발송을 통한 이벤트 혜택 제공</li>
+            <li><strong>진행 기간:</strong> 2026.05.27~2026.05.29 (3일간)</li>
+            <li><strong>참여 방식:</strong> 매크로플러스 신규 가입 → 구글폼 정보 입력 → 신청 완료</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>3. LMS 발송 대상 기준</h2>
+        <div class="card">
+          <h3>대상 기준</h3>
+          <ul>
+            <li>2026년 4월 판매등록건수 101건 이상</li>
+            <li>최종 발송 대상자 수: <strong>8,182명</strong></li>
+          </ul>
+          <h3>선정 사유</h3>
+          <ul>
+            <li>판매등록 빈도가 높은 회원일수록 반복 등록 니즈가 높음</li>
+            <li>동시등록 기능 체감 가능성이 높음</li>
+            <li>실제 이용 전환 가능성이 높은 회원군 우선 적용</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>4. 이벤트 혜택</h2>
+        <div class="benefit-grid">
+          <div class="benefit">
+            <span class="badge">기본 혜택</span>
+            <div class="main">신규 가입 후 이벤트 신청 시<br />1개월 무료 이용권 제공</div>
+          </div>
+          <div class="benefit">
+            <span class="badge">스페셜 보너스 혜택</span>
+            <div class="main">무료 이용권 지급 후 등록기 실제 이용 시<br />추가 3개월 무료 이용권 제공</div>
+          </div>
+        </div>
+        <div class="note">※ 추가 혜택은 실제 이용 여부 등 운영 기준 확인 후 지급 예정</div>
+      </section>
+
+      <section class="section">
+        <h2>5. LMS 발송 문구</h2>
+        <div class="sms">(광고)
+매니아 X 엔츠소프트 제휴 기념🎉
+상품 등록은 한 번에, 판매는 더 편하게!
+
+매니아 + 베이 동시등록 지원!
+매크로플러스를 이용해 보세요
+
+🎁 신규 가입 시 1개월 무료 이용권 제공
+🎁 등록기 실제 이용 시 추가 3개월 무료 이용권 제공
+⏰ 3일 한정 이벤트 ▶ https://vo.la/O1n494S</div>
+      </section>
+
+      <section class="section">
+        <h2>6. 기대효과</h2>
+        <ul>
+          <li>반복 등록 판매자의 상품 등록 편의성 개선</li>
+          <li>판매 활동 회원 대상 이용 편의성 및 서비스 만족도 강화</li>
+          <li>실제 사용 데이터 기반 제휴 효과 및 이용 전환율 검증 가능</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>7. 담당자 의견</h2>
+        <div class="card">
+          본 이벤트는 판매등록 활동이 높은 회원군을 대상으로 우선 진행하여,
+          매크로플러스 동시등록 기능의 실제 이용 반응 및 전환 가능성을 확인하고자 합니다.
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <h3>※ 구글폼 구성 내용 ※</h3>
+            <strong>입력 항목</strong>
+            <ul>
+              <li>아이템매니아 아이디</li>
+              <li>엔츠소프트(매크로플러스) 아이디</li>
+              <li>연락처</li>
+              <li>개인정보 수집 및 이용 동의</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>&nbsp;</h3>
+            <strong>안내 내용</strong>
+            <ul>
+              <li>이벤트 혜택 안내</li>
+              <li>참여 방법 안내</li>
+              <li>이벤트 기간 및 지급 일정 안내</li>
+              <li>유의사항 안내</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="decision">
+        <h2>결정사항</h2>
+        <ul>
+          <li>아이템매니아 X 엔츠소프트 제휴 이벤트 진행 여부</li>
+          <li>LMS 발송 대상 기준 및 발송 진행 여부</li>
+        </ul>
+      </section>
+    </section>
+
+    <footer class="footer">
+      본 리포트는 2026년 5월 22일 기준 기안 내용을 바탕으로 작성되었습니다.
+    </footer>
+  </main>
+</body>
+</html>
