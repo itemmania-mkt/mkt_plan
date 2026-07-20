@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구매자 모객 전략 보고서 (요약본)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;800&display=swap');
+        body { font-family: 'Pretendard', sans-serif; background-color: #f1f5f9; color: #1e293b; line-height: 1.6; }
+        .content-card { background: white; border-radius: 1rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); border: 1px solid #e2e8f0; margin-bottom: 2rem; padding: 2rem; }
+        .chart-container { position: relative; width: 100%; max-width: 800px; margin: 0 auto; height: 320px; }
+        .highlight-box { border-left: 4px solid #f97316; background-color: #fff7ed; padding: 1.25rem; border-radius: 0 0.5rem 0.5rem 0; }
+        .tag { font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 9999px; }
+        .tag-high { background-color: #dcfce7; color: #166534; }
+        .tag-mid { background-color: #fef9c3; color: #854d0e; }
+        .tag-low { background-color: #f1f5f9; color: #475569; }
+        @media print { .no-print { display: none; } body { background: white; } .content-card { box-shadow: none; border: 1px solid #ddd; page-break-inside: avoid; } }
+    </style>
+</head>
+<body class="py-10 px-4 md:px-8">
+
+    <div class="max-w-5xl mx-auto">
+        <!-- Header -->
+        <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+                <span class="text-orange-600 font-bold tracking-widest text-sm uppercase">Marketing Team Report</span>
+                <h1 class="text-4xl font-extrabold text-slate-900 mt-2 tracking-tight">구매자 모객 전략 <span class="text-orange-500">핵심 요약</span></h1>
+                <p class="text-slate-500 mt-2 text-lg">리니지클래식 리스크 대응 및 성장 게임 중심의 90일 실행 전략</p>
+            </div>
+            <div class="text-right text-sm text-slate-400">
+                <p>2026. 07. 20</p>
+                <p>아이템매니아 · 아이템베이 통합전략유닛</p>
+            </div>
+        </div>
+
+        <!-- Section 1: Executive Summary & Diagnosis -->
+        <div class="content-card">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="md:col-span-1">
+                    <h2 class="text-xl font-bold mb-4 flex items-center"><span class="w-1.5 h-6 bg-orange-500 mr-2 rounded-full"></span>현황 진단</h2>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                            <p class="text-xs font-semibold text-slate-400 uppercase">6월 전체 거래액</p>
+                            <p class="text-2xl font-black text-slate-800">744.4억 <span class="text-red-500 text-sm font-normal">▼ 21.2%</span></p>
+                        </div>
+                        <div class="p-4 bg-red-50 rounded-lg border border-red-100">
+                            <p class="text-xs font-semibold text-red-400 uppercase">하락 원인 기여도</p>
+                            <p class="text-2xl font-black text-red-600">96.5%</p>
+                            <p class="text-xs text-red-500 mt-1">감소액 대부분이 '리니지클래식'에 집중</p>
+                        </div>
+                        <div class="highlight-box">
+                            <p class="text-sm font-bold text-orange-800">결론: 플랫폼 이탈이 아닌 '특정 게임'의 수요 감소. 타 게임 성장세에 화력을 집중해야 함.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <h3 class="text-sm font-bold text-slate-400 mb-4 text-center">주요 게임별 거래액 증감 추이 (%)</h3>
+                    <div class="chart-container">
+                        <canvas id="mainChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Strategy Pillars -->
+        <div class="content-card">
+            <h2 class="text-xl font-bold mb-6 flex items-center"><span class="w-1.5 h-6 bg-orange-500 mr-2 rounded-full"></span>4대 통합 전략 방향</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="p-5 border border-slate-100 rounded-xl bg-slate-50">
+                    <p class="text-orange-500 font-black text-xl mb-2">01</p>
+                    <p class="font-bold text-slate-800 mb-1">직접 발굴</p>
+                    <p class="text-xs text-slate-500">커뮤니티/SEO 직접 침투로 신규 접점 확보</p>
+                </div>
+                <div class="p-5 border border-slate-100 rounded-xl bg-slate-50">
+                    <p class="text-orange-500 font-black text-xl mb-2">02</p>
+                    <p class="font-bold text-slate-800 mb-1">전환 최적화</p>
+                    <p class="text-xs text-slate-500">안심 지표 노출로 첫 거래 허들 제거</p>
+                </div>
+                <div class="p-5 border border-slate-100 rounded-xl bg-slate-50">
+                    <p class="text-orange-500 font-black text-xl mb-2">03</p>
+                    <p class="font-bold text-slate-800 mb-1">능동 관리</p>
+                    <p class="text-xs text-slate-500">찜/알림/CRM 기반의 이탈 고객 회수</p>
+                </div>
+                <div class="p-5 border border-slate-100 rounded-xl bg-slate-50">
+                    <p class="text-orange-500 font-black text-xl mb-2">04</p>
+                    <p class="font-bold text-slate-800 mb-1">체질 개선</p>
+                    <p class="text-xs text-slate-500">성장 게임 공급 확대로 포트폴리오 다변화</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: 10 Action Items -->
+        <div class="content-card">
+            <h2 class="text-xl font-bold mb-6 flex items-center justify-between">
+                <span><span class="w-1.5 h-6 bg-orange-500 mr-2 rounded-full"></span>우선 실행 10대 과제</span>
+                <span class="text-sm font-normal text-slate-400 italic">효과 및 실행 시점 기준 정렬</span>
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b-2 border-slate-100">
+                            <th class="py-3 px-2 font-bold text-slate-400 text-xs uppercase w-12 text-center">순위</th>
+                            <th class="py-3 px-4 font-bold text-slate-800 text-sm">실행 과제</th>
+                            <th class="py-3 px-4 font-bold text-slate-800 text-sm">핵심 실행안</th>
+                            <th class="py-3 px-2 font-bold text-slate-800 text-sm text-center">난이도</th>
+                            <th class="py-3 px-2 font-bold text-slate-800 text-sm text-center">시점</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-50">
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-2 text-center font-black text-orange-500">01</td>
+                            <td class="py-4 px-4 font-bold text-slate-900">찜·알림 고도화</td>
+                            <td class="py-4 px-4 text-sm text-slate-600">가격 하락 및 신규 매물 등록 시 앱푸시 자동 발송</td>
+                            <td class="py-4 px-2 text-center"><span class="tag tag-low">낮음</span></td>
+                            <td class="py-4 px-2 text-center font-bold text-green-600 text-sm text-center">즉시</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-2 text-center font-black text-orange-500">02</td>
+                            <td class="py-4 px-4 font-bold text-slate-900">구매 휴면 CRM</td>
+                            <td class="py-4 px-4 text-sm text-slate-600">30/60/90일 미거래 고객 대상 선호게임 쿠폰 발송</td>
+                            <td class="py-4 px-2 text-center"><span class="tag tag-low">낮음</span></td>
+                            <td class="py-4 px-2 text-center font-bold text-green-600 text-sm text-center">즉시</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-2 text-center font-black text-orange-500">03</td>
+                            <td class="py-4 px-4 font-bold text-slate-900">구매·결제 이탈 복구</td>
+                            <td class="py-4 px-4 text-sm text-slate-600">결제 취소/미결제 시 원인별 대체 매물 정보 즉시 안내</td>
+                            <td class="py-4 px-2 text-center"><span class="tag tag-low">낮음</span></td>
+                            <td class="py-4 px-2 text-center font-bold text-green-600 text-sm text-center">즉시</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-2 text-center font-black text-slate-300">04</td>
+                            <td class="py-4 px-4 font-bold text-slate-900">첫구매 전환 패키지</td>
+                            <td class="py-4 px-4 text-sm text-slate-600">가입 후 7일간 단계별 안내 및 첫구매 안전 배너 노출</td>
+                            <td class="py-4 px-2 text-center"><span class="tag tag-low">낮음</span></td>
+                            <td class="py-4 px-2 text-center font-bold text-green-600 text-sm text-center">즉시</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-2 text-center font-black text-slate-300">05</td>
+                            <td class="py-4 px-4 font-bold text-slate-900">바이럴·SNS 할인쿠폰</td>
+                            <td class="py-4 px-4 text-sm text-slate-600">블로그/커뮤니티 콘텐츠 전용 할인쿠폰 코드 결합 발급</td>
+                            <td class="py-4 px-2 text-center"><span class="tag tag-mid">보통</span></td>
+                            <td class="py-4 px-2 text-center font-bold text-green-600 text-sm text-center">즉시</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-2 text-center font-black text-slate-300">06</td>
+                            <td class="py-4 px-4 font-bold text-slate-900">SEO·시세 랜딩 정비</td>
+                            <td class="py-4 px-4 text-sm text-slate-600">게임×서버별 시세 페이지 확대 및 구글 노출 최적화</td>
+                            <td class="py-4 px-2 text-center"><span class="tag tag-mid">보통</span></td>
+                            <td class="py-4 px-2 text-center font-bold text-blue-600 text-sm text-center">단기</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-2 text-center font-black text-slate-300">07</td>
+                            <td class="py-4 px-4 font-bold text-slate-900">수요·공급 통합 캠페인</td>
+                            <td class="py-4 px-4 text-sm text-slate-600">신작/업데이트 시점 구매자-판매자 동시 모집 프로모션</td>
+                            <td class="py-4 px-2 text-center"><span class="tag tag-mid">보통</span></td>
+                            <td class="py-4 px-2 text-center font-bold text-blue-600 text-sm text-center">단기</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-2 text-center font-black text-slate-300">08</td>
+                            <td class="py-4 px-4 font-bold text-slate-900">추천인·리퍼럴 고도화</td>
+                            <td class="py-4 px-4 text-sm text-slate-600">허수 가입이 아닌 '첫 거래 완료' 기준 보상 체계 개편</td>
+                            <td class="py-4 px-2 text-center"><span class="tag tag-mid">보통</span></td>
+                            <td class="py-4 px-2 text-center font-bold text-blue-600 text-sm text-center">단기</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-2 text-center font-black text-slate-300">09</td>
+                            <td class="py-4 px-4 font-bold text-slate-900">조기경보 대시보드</td>
+                            <td class="py-4 px-4 text-sm text-slate-600">게임별 거래액 변동 추적 및 전주比 급감 시 자동 알림</td>
+                            <td class="py-4 px-2 text-center"><span class="tag tag-mid">보통</span></td>
+                            <td class="py-4 px-2 text-center font-bold text-blue-600 text-sm text-center">단기</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-2 text-center font-black text-slate-300">10</td>
+                            <td class="py-4 px-4 font-bold text-slate-900">타게임 파워셀러 유치</td>
+                            <td class="py-4 px-4 text-sm text-slate-600">성장 게임(메이플/로아) 우수 판매자 유치 및 수수료 혜택</td>
+                            <td class="py-4 px-2 text-center"><span class="tag tag-high">높음</span></td>
+                            <td class="py-4 px-2 text-center font-bold text-slate-500 text-sm text-center">중기</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 4: Roadmap -->
+        <div class="content-card bg-slate-900 text-white border-none">
+            <h2 class="text-xl font-bold mb-8 flex items-center"><span class="w-1.5 h-6 bg-orange-500 mr-2 rounded-full"></span>90일 단계별 실행 로드맵</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="relative p-6 rounded-xl bg-white/5 border border-white/10">
+                    <span class="absolute -top-3 left-6 bg-orange-500 text-white px-3 py-1 rounded text-xs font-bold">STEP 01</span>
+                    <h4 class="font-bold mb-4 text-orange-400">즉시 검증 (0~30일)</h4>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li>• 찜·알림/CRM 캠페인 개시</li>
+                        <li>• 이탈 결제 복구 프로세스 가동</li>
+                        <li>• 전환 지표 레이아웃 최적화</li>
+                    </ul>
+                </div>
+                <div class="relative p-6 rounded-xl bg-white/5 border border-white/10">
+                    <span class="absolute -top-3 left-6 bg-blue-500 text-white px-3 py-1 rounded text-xs font-bold">STEP 02</span>
+                    <h4 class="font-bold mb-4 text-blue-400">시스템 고도화 (31~60일)</h4>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li>• SEO 시세 랜딩 페이지 양산</li>
+                        <li>• 추천인 보상 체계 자동화</li>
+                        <li>• 수요-공급 통합 프로모션</li>
+                    </ul>
+                </div>
+                <div class="relative p-6 rounded-xl bg-white/5 border border-white/10">
+                    <span class="absolute -top-3 left-6 bg-slate-500 text-white px-3 py-1 rounded text-xs font-bold">STEP 03</span>
+                    <h4 class="font-bold mb-4 text-slate-400">안정화 및 확장 (61~90일)</h4>
+                    <ul class="text-sm text-slate-300 space-y-2">
+                        <li>• 조기경보 시스템 정식 안착</li>
+                        <li>• 파워셀러 혜택 정례화</li>
+                        <li>• 데이터 기반 순증 가치 평가</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center text-slate-400 text-xs mt-10 no-print">
+            <p>© 2026 Integrated Strategy Report. This document contains confidential information.</p>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('mainChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['메이플스토리', '로스트아크', '리니지M', '아이온2', '메이플월드', '리니지클래식'],
+                datasets: [{
+                    label: '거래 증감율 (%)',
+                    data: [102.7, 36.1, 3.4, 2.6, -41.2, -61.7],
+                    backgroundColor: (ctx) => ctx.raw > 0 ? '#22c55e' : '#ef4444',
+                    borderRadius: 5,
+                    barThickness: 20
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => ` 증감률: ${context.raw}%`
+                        }
+                    }
+                },
+                scales: {
+                    x: { 
+                        grid: { color: '#f1f5f9' },
+                        ticks: { font: { size: 11 } }
+                    },
+                    y: { 
+                        grid: { display: false },
+                        ticks: { font: { weight: 'bold', size: 12 } }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
