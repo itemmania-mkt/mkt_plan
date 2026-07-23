@@ -67,9 +67,20 @@
   .t-new{background:#e7effb;color:#2f6fb0;}
   .who{color:var(--muted);font-size:12.5px;}
   table.t10{table-layout:fixed;}
-  table.t10 th, table.t10 td{font-size:12.5px;padding:7px 8px;}
-  table.t10 td.task{white-space:nowrap;}
-  table.t10 td.tgt{white-space:nowrap;}
+  table.t10 th, table.t10 td{font-size:12.3px;padding:7px 8px;word-break:keep-all;overflow-wrap:anywhere;}
+  table.t10 td.task{white-space:normal;font-weight:600;}
+  table.t10 td.tgt{white-space:normal;}
+  .tags2{display:flex;flex-direction:column;gap:4px;align-items:center;}
+  td.eff{font-size:12px;color:var(--navy2);}
+  .ch{display:inline-block;margin-top:5px;font-size:10.5px;font-weight:700;color:var(--blue);
+    background:#eef4fb;border:1px solid #d6e6f5;border-radius:20px;padding:1px 8px;white-space:nowrap;}
+  /* 가로형 실행안 표: 과제명·핵심대상은 1줄, 실행안·효과는 좁은 폭에서 줄바꿈 */
+  .tbl-scroll{overflow-x:auto;}
+  table.wideact{table-layout:fixed;width:100%;}
+  table.wideact th, table.wideact td{white-space:normal;word-break:keep-all;vertical-align:top;}
+  table.wideact td.task .tname{display:block;white-space:nowrap;font-weight:700;font-size:12.5px;line-height:1.3;}
+  table.wideact td.tgt{white-space:nowrap;}
+  table.wideact td.eff{font-size:12px;color:var(--navy2);}
 
   /* bars */
   .bar-row{display:flex;align-items:center;gap:12px;margin:7px 0;font-size:13.5px;}
@@ -197,10 +208,9 @@
 <div class="wrap">
 <span class="badge">BUYER ACQUISITION STRATEGY</span>
 <h1>구매자 모객 전략 보고서</h1>
-<p class="sub">고객이 있는 곳에서 직접 접점을 만들고, 방문·거래·재방문으로 연결하는 통합 구매자 확보 전략</p>
+<p class="sub">검색·커뮤니티·영상·제휴 등 고객이 있는 모든 접점에서 구매자를 직접 발굴해, 방문·거래·재방문으로 연결하는 통합 구매자 유치 전략</p>
 <div class="meta">
-<span><b>보고 목적</b> 구매자 모객 아이디어 및 실행 방향 공유</span>
-<span><b>작성자</b> 마케팅팀</span>
+<span><b>작성 부서</b> 마케팅기획실 마케팅팀</span>
 <span><b>작성일</b> 2026.07.16</span>
 <span><b>대상 플랫폼</b> 아이템매니아 · 아이템베이</span>
 </div>
@@ -210,7 +220,7 @@
 
 <div class="tab-wrap"><nav class="tab-nav">
 <button class="tab-btn active" data-tab="overview">핵심 요약</button>
-<button class="tab-btn" data-tab="diagnosis">데이터 진단</button>
+<button class="tab-btn" data-tab="diagnosis">전략 방향</button>
 <button class="tab-btn" data-tab="contact">고객 접점</button>
 <button class="tab-btn" data-tab="strategy">구매자 전략</button>
 <button class="tab-btn" data-tab="action">실행 과제</button>
@@ -220,68 +230,37 @@
 <div class="tab-panel active" id="tab-overview"><section class="slide"><div class="wrap">
 <div class="kicker">Strategy Overview</div>
 <h2 class="sec">한 장 요약</h2>
-<p class="lead">구매자 모객 전략을 <b>고객 접점 확대 → 사이트 방문 → 구매 전환 → 재방문</b> 흐름으로 연결해, 아래 <b>4대 방향</b>을 중심으로 추진하고자 합니다.</p>
+<p class="lead" style="max-width:100%;">구매자 모객 전략을 <b>접점 확대 → 방문 → 구매 → 재방문</b> 흐름으로 연결해, 아래 <b>4대 방향</b>을 중심으로 추진하고자 합니다.</p>
 <div class="callout blue"><div class="t">추진 방향 4가지</div>
-<b>① 고객 접점 직접 발굴</b> — 검색·커뮤니티·영상·제휴에서 마케팅팀이 신규 접점을 직접 확보<br>
+<b>① 고객 접점 직접 발굴</b> — 검색·커뮤니티·영상·제휴 등 고객이 있는 외부 접점에서 마케팅팀이 신규 구매자를 직접 확보<br>
 <b>② 방문 이유 제공</b> — 시세·적정가, 판매자 신뢰 정보, 원하는 매물을 구매 단계 전면에 노출<br>
 <b>③ 거래·재방문 유도</b> — 첫 구매 지원, 찜·가격 알림, 구매 휴면 CRM 운영<br>
-<b>④ 단일 게임 의존도 완화</b> — 성장 게임의 매물·콘텐츠 확대로 거래 기반 분산</div>
-<div class="callout"><div class="t">판단 근거</div>거래금액 급락의 <b>96.5%가 리니지클래식 단일 게임</b>에서 발생했고, Google 자연검색은 순위·CTR이 개선됐음에도 노출·클릭이 감소해 <b>관련 검색 수요 자체의 감소</b>가 확인됩니다. 즉 플랫폼 경쟁력 문제라기보다 <b>단일 게임 의존과 내부 전환 체계 부족</b>이 원인이므로, 광고 집행 확대만으로는 회복이 어렵다고 판단했습니다.</div>
+<b>④ 매물·게임 포트폴리오 확대</b> — 성장 게임의 매물·콘텐츠를 넓혀 거래 기반 분산</div>
+<div class="callout"><div class="t">구매자 모객 전략 실행 이유</div>현재 <b>대량 판매자(작업장)</b>는 영업을 통해 일정 부분 확보된 상태로, 이 매물을 소화할 <b>구매자 수요</b>가 필요한 상황입니다. 나아가 대량 판매자뿐 아니라 <b>일반 판매자까지 함께 흡수</b>하려면, 거래를 일으킬 구매자가 먼저 모여야 합니다. 즉 공급(매물)은 갖춰지고 있으므로, 본 전략은 <b>매물을 빠르게 회전시킬 구매자를 외부에서 데려오는 데</b> 무게를 두고 수립했습니다.</div>
 <div class="chips">
 <div class="chip"><div class="n">6축</div><div class="d">전략축 재구성</div><div class="w">유입·전환·유지·공급·콘텐츠제휴·운영기반</div></div>
-<div class="chip"><div class="n">TOP 10</div><div class="d">우선 실행 과제</div><div class="w">효과×난이도 기준 우선순위</div></div>
+<div class="chip"><div class="n">외부 우선</div><div class="d">모객 실행안 전면 배치</div><div class="w">서포터즈·크리에이터·스트리머·디스코드·PC방·제휴</div></div>
 <div class="chip"><div class="n">90일</div><div class="d">단계별 로드맵</div><div class="w">즉시검증 → 고도화 → 확대·개발</div></div>
 </div>
 </div></section></div>
 <!-- ===== 1. 진단 ===== -->
 <div class="tab-panel" id="tab-diagnosis"><section class="slide"><div class="wrap">
-<div class="kicker">Part 1 · 현황 진단</div>
-<h2 class="sec">데이터로 본 문제의 본질</h2>
-<p class="lead">실측 데이터 기준 진단입니다. 거래금액은 감소했으나 원인은 특정 게임에 집중되어 있습니다.</p>
-<div class="kpis">
-<div class="kpi"><div class="lab">5월 거래금액</div><div class="num">945.1억</div><div class="fn">일평균 30.5억</div></div>
-<div class="kpi"><div class="lab">6월 거래금액</div><div class="num dn">744.4억</div><div class="fn">전월 대비 −21.2%</div></div>
-<div class="kpi"><div class="lab">감소액 중 리니지클래식</div><div class="num dn">96.5%</div><div class="fn">−193.7억 / −200.7억</div></div>
-<div class="kpi"><div class="lab">리니지클래식 제외 증감</div><div class="num">−1.2%</div><div class="fn">사실상 유지</div></div>
-</div>
-<h3>게임별 거래금액 변화 (5월 일평균 → 7월 1–14일 일평균)</h3>
-<div class="bar-row"><span class="nm">메이플스토리</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,#2e9e6b,#63c79a);"></div></div><span class="vl pos">+102.7% ▲</span></div>
-<div class="bar-row"><span class="nm">로스트아크</span><div class="bar-track"><div class="bar-fill" style="width:52%;background:linear-gradient(90deg,#2e9e6b,#63c79a);"></div></div><span class="vl pos">+36.1% ▲</span></div>
-<div class="bar-row"><span class="nm">리니지M</span><div class="bar-track"><div class="bar-fill" style="width:20%;background:#8fb8dd;"></div></div><span class="vl pos">+3.4%</span></div>
-<div class="bar-row"><span class="nm">아이온2</span><div class="bar-track"><div class="bar-fill" style="width:19%;background:#8fb8dd;"></div></div><span class="vl pos">+2.6%</span></div>
-<div class="bar-row"><span class="nm">메이플월드</span><div class="bar-track"><div class="bar-fill" style="width:41%;background:linear-gradient(90deg,#e8873a,#f2a65a);"></div></div><span class="vl neg">−41.2% ▼</span></div>
-<div class="bar-row"><span class="nm">리니지클래식</span><div class="bar-track"><div class="bar-fill" style="width:62%;background:linear-gradient(90deg,#d64545,#e57373);"></div></div><span class="vl neg">−61.7% ▼</span></div>
-<p class="note">메이플스토리·로스트아크는 별도 마케팅 없이 자연 성장 중 — 이 흐름에 공급을 붙여 가속하는 것이 핵심 기회입니다.</p>
-<div class="axis-grid" style="margin-top:22px;">
-<div class="callout" style="margin:0;">
-<div class="t">검색 수요 자체가 줄었다 (Google 자연검색)</div>
-      클릭 −13.9%, 노출 −24.5%인데 <b>평균 게재순위는 오히려 개선(4.45→3.76)</b>됐습니다.
-      랭킹 문제가 아니라 <b>게임 관련 검색 수요 자체가 감소</b>한 것으로, 리니지클래식 이탈 가설과 일치합니다.
-    </div>
-<div class="callout red" style="margin:0;">
-<div class="t">경쟁 구도</div>
-      최고 거래금액 대비 매니아 −64.2%·베이 −63.3%로 <b>업계 공통 하락</b>입니다.
-      추정 거래금액(1/1~7/14)은 매니아 5,959억 vs <b>바로템 5,571억</b>으로 격차가 축소됐고,
-      구글트렌드 관심도도 매니아 71 · 바로템 66으로 근접했습니다.
-    </div>
-</div>
-</div></section><section class="slide"><div class="wrap">
-<div class="kicker">Part 2 · 전략 방향</div>
-<h2 class="sec">문제 재정의 — "모객"에서 "유동성·전환"으로</h2>
-<p class="lead">외부 광고 확대 전에 내부 누수를 막고, 구매자와 판매자를 같은 시장 단위에서 동시에 운영해야 합니다.</p>
+<div class="kicker">Part 1 · 전략 방향</div>
+<h2 class="sec">구매자 모객을 어떻게 정의할 것인가</h2>
+<p class="lead">'모객'을 어떻게 정의하느냐에 따라 실행 과제와 성과 지표가 달라집니다. 본 전략은 아래 정의에서 출발합니다.</p>
 <div class="callout">
-<div class="t">기존 관점 → 재정의</div>
-<b>"구매자를 더 데려오는 방법"</b> → <b>"구매 의도가 생긴 이용자가 원하는 매물을 발견하고, 응답 가능한 판매자와 거래를 완료한 뒤, 다시 구매하도록 만드는 방법"</b>
+<div class="t">이번 전략에서의 '구매자 모객' 정의</div>
+    단순히 방문자·신청자 수를 늘리는 것이 아니라, <b>"구매 의도가 생긴 이용자가 원하는 매물을 발견하고, 응답 가능한 판매자와 거래를 완료한 뒤, 다시 구매하도록 만드는 것"</b>으로 정의합니다.
 </div>
-<h3>구매자 이탈이 발생하는 5개 구간</h3>
+<h3>구매 여정에서 이탈이 발생할 수 있는 5개 구간</h3>
 <table>
-<thead><tr><th style="width:150px">구간</th><th>진단 내용</th><th style="width:200px">대응 전략축</th></tr></thead>
+<thead><tr><th style="width:150px">구간</th><th>진단 내용</th><th style="width:220px">대응 방향</th></tr></thead>
 <tbody>
-<tr><td><b>① 유입 부족</b></td><td>구매 의도가 있는 게이머에게 브랜드·콘텐츠가 도달하지 않음</td><td>축 A 유입 / 축 E 콘텐츠</td></tr>
-<tr><td><b>② 검색 실패</b></td><td>게임·서버·가격 조건에 맞는 매물이 없음</td><td>축 D 공급 / 축 A 유입</td></tr>
-<tr><td><b>③ 신뢰·속도 이탈</b></td><td>판매자 미응답, 신뢰정보 부족, 먹튀 불안</td><td>축 B 전환 / 축 D 공급</td></tr>
-<tr><td><b>④ 신청·결제 이탈</b></td><td>UX·인증·결제오류 또는 가격 부담으로 중단</td><td>축 B 전환 / 축 C 유지</td></tr>
-<tr><td><b>⑤ 재구매 실패</b></td><td>구매주기·게임 이벤트에 맞춘 후속 관리 부족</td><td>축 C 유지</td></tr>
+<tr><td><b>① 유입 부족</b></td><td>구매 의도가 있는 게이머에게 브랜드·콘텐츠가 도달하지 않음</td><td>외부 유입·콘텐츠 접점 강화</td></tr>
+<tr><td><b>② 검색 실패</b></td><td>게임·서버·가격 조건에 맞는 매물이 없음</td><td>매물 공급 확대·검색 결과 개선</td></tr>
+<tr><td><b>③ 신뢰·속도 이탈</b></td><td>판매자 미응답, 신뢰정보 부족, 먹튀 불안</td><td>판매자 신뢰정보·응답 속도 개선</td></tr>
+<tr><td><b>④ 신청·결제 이탈</b></td><td>UX·인증·결제오류 또는 가격 부담으로 중단</td><td>결제·UX 개선, 이탈 복구 안내</td></tr>
+<tr><td><b>⑤ 재구매 실패</b></td><td>구매주기·게임 이벤트에 맞춘 후속 관리 부족</td><td>재구매 CRM·알림 운영</td></tr>
 </tbody>
 </table>
 <h3>구매자의 플랫폼 선택 기준과 대응 방향</h3>
@@ -308,9 +287,9 @@
 <!-- ===== 2. 전략 방향 ===== -->
 
 <div class="tab-panel" id="tab-contact"><section class="slide"><div class="wrap">
-<div class="kicker">Part 2-1 · 고객 접점과 방문 이유</div>
+<div class="kicker">Part 2 · 고객 접점과 방문 이유</div>
 <h2 class="sec">고객을 기다리는 마케팅에서, 고객을 찾아가는 마케팅으로</h2>
-<p class="lead">과거에는 PC방 방문, 홍보물 배포, 현장 영업을 통해 고객이 있는 곳에서 브랜드를 직접 알렸습니다. 현재 고객의 활동 공간은 검색, 영상, 커뮤니티, AI 검색 등 온라인으로 이동했으며, 마케팅팀도 그 접점으로 직접 이동해야 합니다.</p>
+<p class="lead">과거에는 PC방 방문, 홍보물 배포, 현장 영업을 통해 고객이 있는 곳에서 브랜드를 직접 알렸습니다. 현재 고객의 활동 공간은 검색, 영상, 커뮤니티, AI 검색 등 온라인으로 이동했으며, 마케팅팀도 그 접점으로 직접 이동하고자 합니다.</p>
 <div class="axis-grid">
 <div class="axis-card">
 <h4><span class="ico">과거</span> 고객이 있는 곳으로 직접 이동</h4>
@@ -384,7 +363,7 @@
 <div class="tab-panel" id="tab-strategy"><section class="slide"><div class="wrap">
 <div class="kicker">Part 3 · 구매자 유형</div>
 <h2 class="sec">구매자 유형별 분석 — "누구를" 모객할 것인가</h2>
-<p class="lead">거래량 회복은 '더 많은 방문자'가 아니라, 유형별로 다른 이유로 방문을 멈춘 구매자를 각각 다른 방식으로 되돌리는 데서 시작합니다. 아래 5개 유형은 각각 다른 방문 트리거가 필요합니다.</p>
+<p class="lead">구매자 확대는 '더 많은 방문자'를 뭉뚱그려 부르는 것이 아니라, 유형별로 다른 이유와 트리거로 유입·전환하는 데서 시작합니다. 아래 5개 유형은 각각 다른 방문 트리거가 필요합니다.</p>
 <div class="btypes">
 <div class="btype">
 <span class="bt-badge b-new">신규</span>
@@ -412,77 +391,62 @@
 </div>
 <div class="btype">
 <span class="bt-badge b-risk">이탈위험</span>
-<div class="bt-title">리니지클래식 등 붕괴 게임 구매자</div>
-<div class="bt-desc">주력 게임 흥행이 꺾여 이탈 직전</div>
+<div class="bt-title">특정 게임 집중 구매자</div>
+<div class="bt-desc">한 게임에 치우쳐, 대체 거래처가 없으면 이탈 위험</div>
 <div class="bt-trig"><b>방문 트리거</b>대체 게임 매칭 추천, 타게임 매물 확대(신규 시도)</div>
 </div>
 </div>
 </div></section><section class="slide"><div class="wrap">
 <div class="kicker">Part 4 · 취합 결과</div>
 <h2 class="sec">6대 전략축 통합 지도</h2>
-<p class="lead">중복·유사 아이디어를 하나로 묶어 6대 전략축으로 재구성했습니다.</p>
-<div class="axis-grid">
-<div class="axis-card">
-<h4><span class="ico">A</span> 유입 — 검색·SEO·PR</h4>
-<div class="goal">구매 의도가 생기는 순간을 선점</div>
-<ul>
-<li><b>SEO 전면 재정비 + 게임×아이템×서버 시세페이지 대량 생성</b></li>
-<li><b>시세 데이터 API·PR 저널리즘</b> — 시세 위젯 매체 무료 제공, 기사화로 무광고 유입</li>
-<li><b>고의도 검색광고 + 게임별 전용 랜딩</b> (게임명+재화+시세 키워드)</li>
-</ul>
-</div>
-<div class="axis-card">
-<h4><span class="ico">B</span> 전환 — 첫 구매·신뢰</h4>
-<div class="goal">방문을 첫 거래로 빠르게 전환</div>
-<ul>
-<li><b>첫구매 허들 완화 + 메인 [첫구매혜택] 버튼 노출</b></li>
-<li><b>상품 리포트 최상단 '안전 지표' 배치</b> — 판매자 거래 성공률·응답률·최근 접속, 거래이력, 사고보상 여부를 가격보다 먼저 노출</li>
-<li><b>구매자 보호 체계 전면 노출</b> — 사고보상·에스크로·분쟁 대응 절차를 구매 단계에서 안내</li>
-<li><b>계정 스펙 수치화·표준화</b> — 게임별 스펙 항목 표준화로 가격 적정성 판단과 상품 비교 시간 단축</li>
-<li><b>가입 후 7일 첫 구매 CRM 캠페인</b> (0·1·3·7일 메시지)</li></ul>
-</div>
-<div class="axis-card">
-<h4><span class="ico">C</span> 유지 — CRM·세그먼트·알림</h4>
-<div class="goal">이미 방문한 구매자의 손실 최소화</div>
-<ul>
-<li><b>찜·알림 레이어 고도화</b> — 가격변동·매칭매물 능동 알림</li>
-<li><b>구매 휴면 CRM</b> (30·60·90일 세그먼트 재구매 유도)</li>
-<li><b>구매·결제 이탈 복구</b> (미완료·취소·미응답 원인별)</li>
-<li><b>세그먼트별 개인화 노출</b> (배너·카피·매물 차등)</li>
-</ul>
-</div>
-<div class="axis-card">
-<h4><span class="ico">D</span> 공급 — 매물·판매자 유동성</h4>
-<div class="goal">실제 거래 가능한 매물과 판매자 확보</div>
-<ul>
-<li><b>게임·서버별 유동성 대시보드 + 광고집행 게이트</b></li>
-<li><b>타 인기 게임 파워셀러 직접 유치</b> (수수료 할인)</li>
-<li><b>리니지클래식 맞춤 등록 UI + HOT매물 자동 분류</b></li>
-<li><b>활성 판매자 SLA·신뢰지표 + 신규셀러 첫거래 스프린트</b></li>
-</ul>
-</div>
-<div class="axis-card">
-<h4><span class="ico">E</span> 콘텐츠·제휴·프로모션</h4>
-<div class="goal">성과 기반으로 도달·전환 확대</div>
-<ul>
-<li><b>커뮤니티 서포터즈 + 라이트 유튜버 + 계정감정 시리즈</b></li>
-<li><b>인플루언서 길드/연맹 스폰서십</b></li>
-<li><b>성과형 크리에이터 제휴</b> (첫거래·순이익 기준 정산) / 밈·트렌드 콘텐츠</li>
-<li><b>거래사이트 선택·안전 비교 콘텐츠</b> / 추천인 리퍼럴 재설계</li>
-<li><b>이벤트</b>: 수요·공급 통합 캠페인·자동응모 캐시지급·시즌패스·구매스탬프</li>
-<li><b>고객 접점 직접 영업</b> — 커뮤니티 운영자·스트리머·PC방·게임 행사 제휴</li><li><b>게임별 정보 허브</b> — 시세·가이드·FAQ·업데이트 영향 콘텐츠 상시 운영</li></ul>
-</div>
-<div class="axis-card">
-<h4><span class="ico">F</span> 운영 기반 — 측정·리스크·포트폴리오</h4>
-<div class="goal">재발 방지와 의사결정 체계</div>
-<ul>
-<li><b>게임별 조기경보 대시보드</b> (전주 −15% 자동 알림)</li>
-<li><b>게임 이슈 레이더·경쟁사 모니터링</b></li>
-<li><b>포트폴리오 다변화 / 리니지클래식→대체게임 전환</b></li>
-<li><b>대조군 실험 원칙 + VIP 등급제·마일리지</b></li>
-<li><b>브랜드 역할 분리</b> (매니아 대중형 vs 베이 커뮤니티 밀착)</li>
-</ul>
-</div>
+<p class="lead" style="margin-bottom:4px;">구매자 유치 전략의 전체 그림을 <b>6개 전략축</b>으로 구조화했습니다. 외부 <b>유입</b>으로 구매자를 데려오고, <b>전환·유지</b>로 거래와 재구매를 이으며, <b>공급</b>과 <b>콘텐츠·제휴·프로모션</b>이 이를 뒷받침하고, <b>운영 기반</b>이 측정·리스크 관리로 전체를 지탱하는 구조입니다.</p>
+<div style="max-width:840px;margin:0 auto 4px;">
+<svg viewBox="0 52 900 466" style="width:100%;height:auto;font-family:'Malgun Gothic','맑은 고딕','Apple SD Gothic Neo',sans-serif;" xmlns="http://www.w3.org/2000/svg">
+<polygon points="300,120 600,120 695,290 600,460 300,460 205,290" fill="none" stroke="#cdd7e3" stroke-width="2"></polygon>
+<line x1="450" y1="290" x2="300" y2="120" stroke="#dbe3ec" stroke-width="1.5"></line>
+<line x1="450" y1="290" x2="600" y2="120" stroke="#dbe3ec" stroke-width="1.5"></line>
+<line x1="450" y1="290" x2="695" y2="290" stroke="#dbe3ec" stroke-width="1.5"></line>
+<line x1="450" y1="290" x2="600" y2="460" stroke="#dbe3ec" stroke-width="1.5"></line>
+<line x1="450" y1="290" x2="300" y2="460" stroke="#dbe3ec" stroke-width="1.5"></line>
+<line x1="450" y1="290" x2="205" y2="290" stroke="#dbe3ec" stroke-width="1.5"></line>
+<circle cx="450" cy="290" r="40" fill="#eef4fb" stroke="#cdd7e3" stroke-width="2"></circle>
+<text x="450" y="290" font-size="30" text-anchor="middle" dominant-baseline="central">🔗</text>
+<!-- F 운영기반 -->
+<circle cx="300" cy="120" r="44" fill="#fdecec" stroke="#d64545" stroke-width="3"></circle>
+<text x="300" y="120" font-size="30" text-anchor="middle" dominant-baseline="central">📊</text>
+<text x="248" y="108" font-size="16" font-weight="800" fill="#d64545" text-anchor="end">운영 기반</text>
+<text x="248" y="128" font-size="12" fill="#5a6b7d" text-anchor="end">측정·리스크·포트폴리오로</text>
+<text x="248" y="145" font-size="12" fill="#5a6b7d" text-anchor="end">재발 방지·의사결정 체계</text>
+<!-- A 유입 -->
+<circle cx="600" cy="120" r="44" fill="#eaf3fb" stroke="#3a86c8" stroke-width="3"></circle>
+<text x="600" y="120" font-size="30" text-anchor="middle" dominant-baseline="central">📈</text>
+<text x="652" y="108" font-size="16" font-weight="800" fill="#2f7fc9" text-anchor="start">유입</text>
+<text x="652" y="128" font-size="12" fill="#5a6b7d" text-anchor="start">검색·SEO·디스코드·PR로</text>
+<text x="652" y="145" font-size="12" fill="#5a6b7d" text-anchor="start">구매 의도 순간 선점</text>
+<!-- E 콘텐츠 -->
+<circle cx="205" cy="290" r="44" fill="#fdf0e2" stroke="#e8873a" stroke-width="3"></circle>
+<text x="205" y="290" font-size="30" text-anchor="middle" dominant-baseline="central">📣</text>
+<text x="150" y="285" font-size="14.5" font-weight="800" fill="#d6772a" text-anchor="end">콘텐츠·제휴·프로모션</text>
+<text x="150" y="305" font-size="12" fill="#5a6b7d" text-anchor="end">성과 기반 도달·전환 확대</text>
+<!-- B 전환 -->
+<circle cx="695" cy="290" r="44" fill="#e7f6ee" stroke="#2e9e6b" stroke-width="3"></circle>
+<text x="695" y="290" font-size="30" text-anchor="middle" dominant-baseline="central">🛒</text>
+<text x="750" y="278" font-size="16" font-weight="800" fill="#278a5c" text-anchor="start">전환</text>
+<text x="750" y="298" font-size="12" fill="#5a6b7d" text-anchor="start">첫 구매·신뢰 강화로</text>
+<text x="750" y="315" font-size="12" fill="#5a6b7d" text-anchor="start">방문을 첫 거래로 전환</text>
+<!-- D 공급 -->
+<circle cx="300" cy="460" r="44" fill="#fbf3d6" stroke="#e0b325" stroke-width="3"></circle>
+<text x="300" y="460" font-size="30" text-anchor="middle" dominant-baseline="central">📦</text>
+<text x="248" y="448" font-size="16" font-weight="800" fill="#b8860b" text-anchor="end">공급</text>
+<text x="248" y="468" font-size="12" fill="#5a6b7d" text-anchor="end">매물·판매자 유동성 확보로</text>
+<text x="248" y="485" font-size="12" fill="#5a6b7d" text-anchor="end">거래 가능한 환경 조성</text>
+<!-- C 유지 -->
+<circle cx="600" cy="460" r="44" fill="#eef6e0" stroke="#7fae2f" stroke-width="3"></circle>
+<text x="600" y="460" font-size="30" text-anchor="middle" dominant-baseline="central">🔁</text>
+<text x="652" y="448" font-size="16" font-weight="800" fill="#6f9e26" text-anchor="start">유지</text>
+<text x="652" y="468" font-size="12" fill="#5a6b7d" text-anchor="start">CRM·세그먼트·알림으로</text>
+<text x="652" y="485" font-size="12" fill="#5a6b7d" text-anchor="start">방문 구매자 손실 최소화</text>
+</svg>
 </div>
 </div></section></div>
 <!-- ===== 4. 취합 결과 ===== -->
@@ -491,7 +455,7 @@
 <div class="tab-panel" id="tab-action"><section class="slide"><div class="wrap">
 <div class="kicker">Part 5 · 우선순위</div>
 <h2 class="sec">효과 × 난이도 우선순위 매트릭스</h2>
-<p class="lead">기대효과와 실행 난이도로 과제를 배치했습니다. 왼쪽 위(고효과·저난이도) 과제부터 착수를 권장합니다.</p>
+<p class="lead">기대효과와 실행 난이도로 과제를 배치했습니다. <b>외부 구매자 유치 과제(파랑 계열)를 전면에 두고</b>, 내부 전환·유지 과제(초록)와 함께 왼쪽 위(고효과·저난이도)부터 착수를 권장합니다.</p>
 <div class="matrix">
 <div class="grid-line" style="left:50%;top:0;width:1.5px;height:100%;"></div>
 <div class="grid-line" style="top:50%;left:0;height:1.5px;width:100%;"></div>
@@ -501,104 +465,95 @@
 <div class="quad-label" style="right:24px;bottom:14px;">신중 검토</div>
 <div class="axl" style="left:8px;top:48%;transform:rotate(-90deg);transform-origin:left;">◀ 기대효과 높음</div>
 <div class="axl" style="right:20px;bottom:6px;">실행 난이도 높음 ▶</div>
-<!-- Quick win (좌상) -->
-<span class="dot p1" style="left:16%;top:16%;">찜·알림 고도화</span>
-<span class="dot p1" style="left:30%;top:30%;">구매 휴면 CRM</span>
-<span class="dot p1" style="left:20%;top:44%;">이탈·결제 복구</span>
-<span class="dot p1" style="left:40%;top:20%;">안전지표 노출</span>
-<span class="dot p1" style="left:44%;top:40%;">첫구매 버튼·CRM</span>
-<!-- 전략적 투자 (우상) -->
-<span class="dot p2" style="left:64%;top:22%;">SEO·시세 랜딩</span>
-<span class="dot p2" style="left:78%;top:34%;">타게임 파워셀러 유치</span>
-<span class="dot p2" style="left:62%;top:42%;">수요·공급 캠페인</span>
-<span class="dot p2" style="left:82%;top:15%;">유동성·조기경보 대시보드</span>
-<span class="dot p2" style="left:70%;top:55%;">등급제·VIP</span>
+<!-- Quick win (좌상) : 외부(주황) + 내부(초록) 혼재 -->
+<span class="dot p2" style="left:15%;top:14%;">커뮤니티 서포터즈</span>
+<span class="dot p2" style="left:34%;top:26%;">바이럴·시즌 이벤트</span>
+<span class="dot p1" style="left:17%;top:40%;">찜·알림 고도화</span>
+<span class="dot p1" style="left:41%;top:44%;">첫구매 패키지·CRM</span>
+<span class="dot p1" style="left:26%;top:56%;">휴면·이탈 복구</span>
+<!-- 전략적 투자 (우상) : 외부 유치 핵심 -->
+<span class="dot p2" style="left:70%;top:18%;">유튜버·스트리머 제휴</span>
+<span class="dot p2" style="left:63%;top:33%;">시세 알림봇 연동</span>
+<span class="dot p2" style="left:82%;top:40%;">SEO·시세 랜딩</span>
+<span class="dot p2" style="left:66%;top:50%;">디스코드 채널 선점</span>
+<span class="dot p3" style="left:84%;top:58%;">타게임 파워셀러</span>
 <!-- 하단 -->
-<span class="dot p3" style="left:22%;top:70%;">밈·계정감정 콘텐츠</span>
-<span class="dot p3" style="left:40%;top:82%;">계정스펙 수치화</span>
-<span class="dot p3" style="left:72%;top:74%;">리니지클래식 등록 UI</span>
-<span class="dot p3" style="left:84%;top:86%;">시세 API·PR / 브랜드 역할분리</span>
+<span class="dot p2" style="left:20%;top:72%;">PC방 오프라인 거래존</span>
+<span class="dot p3" style="left:46%;top:84%;">계정감정 / 스트리머 공동 프로모션</span>
+<span class="dot p3" style="left:72%;top:74%;">시세 API·PR</span>
+<span class="dot p3" style="left:86%;top:86%;">등급제·VIP / 계정스펙 수치화</span>
 </div>
-<p class="note">● 초록 = 즉시 착수(2주 내, Quick Win) · ● 주황 = 전략적 투자(1~3개월) · ● 회색 = 상시·개발·외부협조 필요</p>
+<p class="note">● 파랑 = 외부 구매자 유치 · ● 초록 = 내부 전환·유지(즉시 착수) · ● 회색 = 상시·개발·외부협조 필요</p>
 </div></section><section class="slide"><div class="wrap">
 <div class="kicker">Part 6 · 실행 우선순위</div>
-<h2 class="sec">우선 실행 TOP 10 과제</h2>
-<p class="lead">효과·난이도·실행 시점을 종합한 추천 순서입니다. 상위 5개는 개발 부담이 낮아 즉시 착수가 가능합니다.</p>
-<table class="t10">
-<thead><tr><th class="c" style="width:38px;white-space:nowrap">순위</th><th class="c" style="width:150px">실행 과제</th><th class="c" style="width:118px">핵심 대상</th><th class="c">실행안</th><th class="c" style="width:74px;white-space:nowrap">난이도</th><th class="c" style="width:48px;white-space:nowrap">시점</th></tr></thead>
+<h2 class="sec">외부 구매자 유치 실행안</h2>
+<p class="lead">이번 전략의 무게중심은 <b>외부에서 신규 구매자를 데려오는 과제</b>입니다. 팀원 제출안의 외부 유치 아이디어(커뮤니티·크리에이터·스트리머·디스코드·PC방 오프라인·제휴·이벤트)를 실행안 전면에 배치하고, 각 과제의 <b>실행 채널·예상 효과</b>를 함께 정리했습니다.</p>
+<div class="tbl-scroll"><table class="t10 wideact">
+<thead><tr><th class="c" style="width:4%">순위</th><th class="c" style="width:16%">실행 과제</th><th class="c" style="width:13%">핵심 대상</th><th class="c" style="width:31%">실행안</th><th class="c" style="width:28%">예상 효과</th><th class="c" style="width:8%">난이도·시점</th></tr></thead>
 <tbody>
-<tr><td class="c"><b>1</b></td><td class="task"><b>찜·알림 고도화</b></td><td class="tgt">구매대기 고객</td><td>찜한 상품의 가격 하락·원하는 매물 등록 시 <b>자동 알림</b> → 재방문 유도 (업계 재입고 알림의 방문·전환율이 매우 높음)</td><td class="c"><span class="tag t-lo">낮음</span></td><td class="c"><span class="tag t-hi">즉시</span></td></tr>
-<tr><td class="c"><b>2</b></td><td class="task"><b>구매 휴면 CRM</b></td><td class="tgt">30·60·90일 미구매</td><td>미구매 회원에게 <b>과거 구매 게임·금액대</b> 맞춤 메시지 발송 → 재구매 유도. 일부는 미발송 대조군 대비 효과 검증</td><td class="c"><span class="tag t-lo">낮음</span></td><td class="c"><span class="tag t-hi">즉시</span></td></tr>
-<tr><td class="c"><b>3</b></td><td class="task"><b>구매·결제 이탈 복구</b></td><td class="tgt">구매 도중 이탈</td><td>구매 중단 고객(미결제·취소·판매자 미응답)에게 <b>원인별 대체 매물·결제 방법</b> 안내 → 거래 복구</td><td class="c"><span class="tag t-lo">낮음</span></td><td class="c"><span class="tag t-hi">즉시</span></td></tr>
-<tr><td class="c"><b>4</b></td><td class="task"><b>첫구매 전환 패키지</b></td><td class="tgt">가입 후 미구매</td><td>메인에 <b>첫구매 혜택 버튼·안전 정보(사고보상 등)</b> 노출 + 가입 후 7일 단계별 안내. 대상자에게만 첫 구매 혜택 이벤트 <b>플로팅 배너</b> 노출</td><td class="c"><span class="tag t-lo">낮음</span></td><td class="c"><span class="tag t-hi">즉시</span></td></tr>
-<tr><td class="c"><b>5</b></td><td class="task"><b>바이럴·SNS 할인쿠폰</b></td><td class="tgt">신규 잠재 고객</td><td>블로그·SNS 콘텐츠에 <b>자체 발급 할인쿠폰</b> 결합 → 콘텐츠 조회를 첫 거래로 전환</td><td class="c"><span class="tag t-lo">낮음~중간</span></td><td class="c"><span class="tag t-hi">즉시</span></td></tr>
-<tr><td class="c"><b>6</b></td><td class="task"><b>SEO·시세 랜딩 재정비</b></td><td class="tgt">검색 유입 신규</td><td>'게임명+시세·거래' 검색 상위 노출용 페이지 정비 + <b>게임×서버별 시세 페이지</b> 확대 → 광고비 없이 유입 확대</td><td class="c"><span class="tag t-mid">중간</span></td><td class="c"><span class="tag t-new">단기</span></td></tr>
-<tr><td class="c"><b>7</b></td><td class="task"><b>수요·공급 통합 캠페인</b></td><td class="tgt">신작·업데이트 시점</td><td>수요가 몰리는 <b>신작·업데이트 시점</b>에 구매자·판매자 동시 모집. 신작은 72시간 집중 혜택·전용 이벤트 페이지로 즉각 대응</td><td class="c"><span class="tag t-mid">중간</span></td><td class="c"><span class="tag t-new">단기</span></td></tr>
-<tr><td class="c"><b>8</b></td><td class="task"><b>추천인·리퍼럴</b></td><td class="tgt">기존·신규 구매자</td><td>친구의 '가입'이 아닌 <b>'첫 실제 거래' 완료</b> 시 보상 → 실구매자만 유입. 자기추천·중복 가입 등 어뷰징 차단</td><td class="c"><span class="tag t-mid">중간</span></td><td class="c"><span class="tag t-new">단기</span></td></tr>
-<tr><td class="c"><b>9</b></td><td class="task"><b>조기경보·공급 대시보드</b></td><td class="tgt">내부 운영</td><td>게임·서버별 <b>거래액·매물·판매자</b> 통합 모니터링 도구. 특정 게임 급감(전주 −15%↑) 시 <b>자동 알림</b>으로 즉시 대응, 매물·판매자 부족 게임엔 <b>광고 보류</b>로 예산 낭비 방지 (리니지클래식 급락 뒤늦은 발견 문제 재발 방지)</td><td class="c"><span class="tag t-mid">중간</span></td><td class="c"><span class="tag t-new">단기</span></td></tr>
-<tr><td class="c"><b>10</b></td><td class="task"><b>타게임 파워셀러 유치</b></td><td class="tgt">이탈위험·공급</td><td>성장 게임(메이플·로스트아크)의 <b>우수 판매자 유치·매물 확대</b> → 리니지클래식 단일 게임 쏠림 위험 완화</td><td class="c"><span class="tag t-mid">중상</span></td><td class="c"><span class="tag t-lo">중기</span></td></tr>
+<tr><td class="c"><b>1</b></td><td class="task"><span class="tname">커뮤니티 서포터즈 운영</span><span class="ch">커뮤니티</span></td><td class="tgt">잠재·고관여 게이머</td><td>인벤·디시·루리웹 <b>정보/경험형 콘텐츠</b> 운영(15명·8주)·계정감정 연계</td><td class="eff">커뮤니티 신뢰·검색/매물 유입 증가</td><td class="c"><div class="tags2"><span class="tag t-lo">낮음~중간</span><span class="tag t-hi">즉시</span></div></td></tr>
+<tr><td class="c"><b>2</b></td><td class="task"><span class="tname">유튜버·스트리머 제휴</span><span class="ch">유튜브·스트리머</span></td><td class="tgt">팬덤·길드 이용자</td><td>구독 1천~1만 유튜버·스트리머 <b>실사용 리뷰·쇼츠·라이브 고정링크</b>, 전용코드 거래 연결·성과형 정산</td><td class="eff">팬덤·길드 기반 신규 유입·비용 효율↑</td><td class="c"><div class="tags2"><span class="tag t-mid">중간</span><span class="tag t-hi">즉시</span></div></td></tr>
+<tr><td class="c"><b>3</b></td><td class="task"><span class="tname">신규게임 디스코드 선점</span><span class="ch">디스코드</span></td><td class="tgt">신작 대기 구매자</td><td>신작 사전예약·런칭 시 <b>게임명 채널 선점·운영</b> → 출시 후 거래 연결</td><td class="eff">신작 초기 대기 수요 선점</td><td class="c"><div class="tags2"><span class="tag t-lo">낮음~중간</span><span class="tag t-new">단기</span></div></td></tr>
+<tr><td class="c"><b>4</b></td><td class="task"><span class="tname">시세 알림봇 외부채널 연동</span><span class="ch">디스코드·카톡</span></td><td class="tgt">구매대기 유저</td><td>디스코드·카톡에 <b>최저가 알림 + 즉시구매 딥링크</b></td><td class="eff">시세 탐색 순간 즉시 구매 유입</td><td class="c"><div class="tags2"><span class="tag t-mid">중간</span><span class="tag t-new">단기</span></div></td></tr>
+<tr><td class="c"><b>5</b></td><td class="task"><span class="tname">PC방 오프라인 거래존</span><span class="ch">PC방(오프라인)</span></td><td class="tgt">PC방 게이머</td><td>게토 PC방 <b>'오늘의 거래 간식'(막대사탕·미니젤리) POP + 간식별 QR</b>로 방문 유도</td><td class="eff">오프라인 게이머 방문·반복 유도</td><td class="c"><div class="tags2"><span class="tag t-mid">중간</span><span class="tag t-new">단기</span></div></td></tr>
+<tr><td class="c"><b>6</b></td><td class="task"><span class="tname">SEO·시세 랜딩 재정비</span><span class="ch">SEO·검색</span></td><td class="tgt">검색 유입 신규</td><td>게임명+시세 상위노출 + <b>게임×서버 시세페이지</b> 확대</td><td class="eff">광고비 없이 검색 유입 확대</td><td class="c"><div class="tags2"><span class="tag t-mid">중간</span><span class="tag t-new">단기</span></div></td></tr>
+<tr><td class="c"><b>7</b></td><td class="task"><span class="tname">바이럴·시즌 이벤트</span><span class="ch">SNS·이벤트</span></td><td class="tgt">신규·젊은 층</td><td>밈·<b>자동응모 캐시지급</b>·시즌패스·SNS 할인쿠폰</td><td class="eff">콘텐츠 조회 → 첫 거래 전환</td><td class="c"><div class="tags2"><span class="tag t-lo">낮음~중간</span><span class="tag t-hi">즉시</span></div></td></tr>
+<tr><td class="c"><b>8</b></td><td class="task"><span class="tname">게임 이슈 공동 프로모션</span><span class="ch">제휴·이벤트</span></td><td class="tgt">신작·업데이트 관심</td><td>신작·업데이트·스트리머 이슈 <b>72시간 동시 모집</b></td><td class="eff">수요 집중기 구매자·판매자 확보</td><td class="c"><div class="tags2"><span class="tag t-mid">중간</span><span class="tag t-new">단기</span></div></td></tr>
+<tr><td class="c"><b>9</b></td><td class="task"><span class="tname">추천인·리퍼럴 재설계</span><span class="ch">추천·리퍼럴</span></td><td class="tgt">기존→신규 구매자</td><td>친구 <b>'첫 유효거래'</b> 시 양측 보상·어뷰징 차단</td><td class="eff">실구매자 저비용 유입·입소문</td><td class="c"><div class="tags2"><span class="tag t-mid">중간</span><span class="tag t-new">단기</span></div></td></tr>
+<tr><td class="c"><b>10</b></td><td class="task"><span class="tname">시세 API·PR 저널리즘</span><span class="ch">PR·제휴</span></td><td class="tgt">신규 잠재 고객</td><td><b>시세 위젯 매체 무료 제공</b>·시세 동향 기사화</td><td class="eff">광고 없는 신규 유입·신뢰 구축</td><td class="c"><div class="tags2"><span class="tag t-mid">중상</span><span class="tag t-lo">중기</span></div></td></tr>
 </tbody>
-</table>
-<div class="callout blue">
-<div class="t">2차 검토 과제 (전략적 투자 · 개발/장기)</div>
-    VIP 등급제·마일리지 · 계정 스펙 수치화 · 리니지클래식 맞춤 등록 UI · 시세 API·PR 저널리즘 ·
-    커뮤니티 서포터즈/크리에이터 제휴 · 시즌패스·자동응모 이벤트 · 브랜드 역할 분리 — 소규모 검증 후 확대를 권장합니다.
-  </div>
-</div></section><section class="slide"><div class="wrap">
-<div class="kicker">Part 7 · 채널 실행</div>
-<h2 class="sec">채널별 실행 계획</h2>
-<p class="lead">각 채널은 개별 노출이 목적이 아니라, 게임별 랜딩과 실제 구매 행동으로 연결되도록 설계합니다.</p>
-<table>
-<thead><tr><th style="width:120px">채널</th><th>실행 방안</th><th style="width:170px">핵심 타깃</th></tr></thead>
+</table></div>
+<h3>내부 전환·유지 및 공급·운영 실행안 (병행)</h3>
+<p class="lead" style="margin-bottom:14px;">외부에서 데려온 구매자를 실제 거래·재구매로 연결하는 <b>내부 전환·유지 과제</b>와, 매물·판매자를 확보하는 <b>공급·운영 과제</b>를 병행합니다. 상당수는 이미 운영 중인 기능의 고도화입니다.</p>
+<div class="tbl-scroll"><table class="t10 wideact">
+<thead><tr><th class="c" style="width:18%">실행 과제</th><th class="c" style="width:13%">핵심 대상</th><th class="c" style="width:37%">실행안</th><th class="c" style="width:24%">예상 효과</th><th class="c" style="width:8%">난이도·시점</th></tr></thead>
 <tbody>
-<tr><td><b>SEO·검색</b></td><td>주요 게임 페이지 구조 개선, 시세·거래 가이드 확대, 게임별 랜딩 연결</td><td>시세·거래 방법 검색 고객</td></tr>
-<tr><td><b>사이트·랜딩</b></td><td>첫 구매 혜택 노출, 모바일 경로 단축, 시세·안전 정보 상품 상단 배치</td><td>신규·구매대기 고객</td></tr>
-<tr><td><b>CRM</b></td><td>가입 미구매·취소·미완료·미재구매 행동별 메시지, 최근 구매 게임 기반 개인화</td><td>신규·기존·이탈회원</td></tr>
-<tr><td><b>블로그·콘텐츠</b></td><td>시세·가이드·계정 가치 콘텐츠 제작, 상품·게임 페이지 직접 연결</td><td>잠재 구매자</td></tr>
-<tr><td><b>커뮤니티</b></td><td>게임별 정보형 콘텐츠 운영, 과도한 홍보 배제, 이용자 반응·이슈 모니터링</td><td>게임별 고관여 이용자</td></tr>
-<tr><td><b>유튜브·인플루언서</b></td><td>실사용 리뷰·쇼츠·길드 연계 콘텐츠, 전용 링크·코드로 거래 연결</td><td>팬덤·길드 이용자</td></tr>
-<tr><td><b>SNS·밈</b></td><td>트렌드 적합 시 간헐 운영, 안전거래·시세 정보 메시지 결합</td><td>젊은 잠재 고객</td></tr>
-<tr><td><b>이벤트·추천</b></td><td>첫 유효 구매 완료 기준 친구추천, 거래 횟수 기반 미션형 프로모션</td><td>신규·반복 구매자</td></tr>
-<tr><td><b>앱·알림</b></td><td>가격 변동·신규 매물·게임 업데이트·쿠폰 혜택 알림</td><td>구매대기·기존 구매자</td></tr>
-<tr><td><b>데이터 운영</b></td><td>게임별 거래 변화·구매 행동·이탈 징후를 정기 확인해 실행 과제에 반영</td><td>내부 운영</td></tr>
+<tr><td class="task"><span class="tname">찜·알림 고도화</span><span class="ch">앱·알림</span></td><td class="tgt">구매대기 고객</td><td>찜한 상품의 가격 하락·매칭 매물 등록 시 <b>능동 자동 알림</b> → 재방문 유도 (재입고 알림 방문·전환율 높음)</td><td class="eff">방치된 구매대기 수요를 재방문·구매로 전환</td><td class="c"><div class="tags2"><span class="tag t-lo">낮음</span><span class="tag t-hi">즉시</span></div></td></tr>
+<tr><td class="task"><span class="tname">첫구매 전환 패키지</span><span class="ch">사이트·CRM</span></td><td class="tgt">가입 후 미구매</td><td>메인 <b>[첫구매혜택] 버튼·안전지표</b> 노출 + 가입 후 7일 단계별 CRM(0·1·3·7일) + 대상자 플로팅 배너</td><td class="eff">가입–첫구매 시간 단축·첫 구매율 상승</td><td class="c"><div class="tags2"><span class="tag t-lo">낮음</span><span class="tag t-hi">즉시</span></div></td></tr>
+<tr><td class="task"><span class="tname">구매 휴면·이탈 복구 CRM</span><span class="ch">CRM</span></td><td class="tgt">휴면·결제 이탈</td><td>과거 구매 게임·금액대 맞춤 메시지 + 미결제·취소·미응답 <b>원인별 대체매물·결제방법</b> 안내 (대조군 검증)</td><td class="eff">이탈 직전 수요 회수·재구매율 상승</td><td class="c"><div class="tags2"><span class="tag t-lo">낮음</span><span class="tag t-hi">즉시</span></div></td></tr>
+<tr><td class="task"><span class="tname">상품 리포트 안전지표 배치</span><span class="ch">사이트·랜딩</span></td><td class="tgt">신규·이탈위험</td><td>판매자 <b>거래 성공률·응답률·최근 접속·거래이력·사고보상</b>을 가격보다 먼저 노출</td><td class="eff">'먹튀 불안' 해소로 결제 직전 이탈 감소</td><td class="c"><div class="tags2"><span class="tag t-lo">낮음~중간</span><span class="tag t-new">단기</span></div></td></tr>
+<tr><td class="task"><span class="tname">타게임 파워셀러 유치</span><span class="ch">판매자 공급</span></td><td class="tgt">성장 게임 공급</td><td>메이플·로스트아크 등 성장 게임 <b>우수 판매자 수수료 할인 유치·매물 확대</b></td><td class="eff">성장 게임 매물 확보로 거래 기반 분산</td><td class="c"><div class="tags2"><span class="tag t-mid">중상</span><span class="tag t-lo">중기</span></div></td></tr>
+<tr><td class="task"><span class="tname">조기경보·유동성 대시보드</span><span class="ch">데이터 운영</span></td><td class="tgt">내부 운영</td><td>게임·서버별 거래·매물·판매자 통합 모니터링·<b>급변 자동알림</b>, 부족 게임엔 <b>광고 보류</b></td><td class="eff">급변 조기 대응·광고 예산 낭비 방지</td><td class="c"><div class="tags2"><span class="tag t-mid">중간</span><span class="tag t-new">단기</span></div></td></tr>
 </tbody>
-</table>
+</table></div>
+
 </div></section><section class="slide"><div class="wrap">
-<div class="kicker">Part 8 · 실행 로드맵</div>
+<div class="kicker">Part 7 · 실행 로드맵</div>
 <h2 class="sec">90일 단계별 실행 계획</h2>
 <p class="lead">분석 → 즉시 실험 → 고도화 → 확대 순으로 추진하며, 각 단계에 Go/No-Go 기준을 둡니다.</p>
 <div class="road">
 <div class="phase">
 <div class="ph-h">1단계 · 즉시 검증<span>0 ~ 30일</span></div>
 <ul>
+<li><b>커뮤니티 서포터즈 8주 파일럿 착수</b>(인벤·디시·루리웹)</li>
+<li><b>유튜버·스트리머·크리에이터 제휴</b> 1차 섭외·성과형 정산 설계</li>
+<li><b>신규게임 디스코드 채널 선점</b>(신작·사전예약 이슈 대응 상시)</li>
+<li>바이럴·시즌 이벤트(밈·자동응모·SNS 쿠폰) 개시</li>
+<li>SEO·시세 랜딩 기본 정비(title/meta/H태그)</li>
+<li>찜·알림 고도화 착수(2주) + 첫구매 전환 패키지</li>
+<li>구매 휴면·이탈 복구 CRM 발송(대조군 유지)</li>
 <li>기준선 분석 + 조기경보·유동성 대시보드 착수</li>
-<li>찜·알림 레이어 고도화 착수(2주)</li>
-<li>구매 휴면 CRM 3종 발송(대조군 유지)</li>
-<li>구매·결제 이탈 복구 캠페인 개시</li>
-<li>첫구매 전환 패키지(버튼·안전지표·7일 CRM)</li>
-<li>바이럴·SNS 자체 할인쿠폰 발급</li>
-<li>SEO·시세 랜딩 재정비 — 기본 정비(title/meta/H태그)</li>
 </ul>
 </div>
 <div class="phase">
 <div class="ph-h">2단계 · 고도화<span>31 ~ 60일</span></div>
 <ul>
-<li>SEO·시세 랜딩 재정비 — 시세페이지 대량 생성·구조화</li>
-<li>수요·공급 통합 캠페인 1건 운영</li>
-<li>추천인·리퍼럴 도입(첫 유효거래 기준)</li>
+<li><b>유튜버·스트리머 제휴 콘텐츠</b> 본격 운영</li>
+<li><b>실시간 시세 알림봇</b> 디스코드·카톡 채널 연동</li>
+<li><b>PC방 오프라인 거래존</b>(게토 PC방 협업) 파일럿</li>
+<li>게임 이슈·스트리머 공동 프로모션 1건</li>
+<li>SEO 시세페이지 대량 생성·구조화 + 추천인·리퍼럴 도입</li>
 <li>타게임 파워셀러 유치·포트폴리오 다변화 착수</li>
-<li>활성 판매자 SLA·신규셀러 스프린트</li>
-<li>게임 이슈 레이더·코호트 시범 운영</li>
 </ul>
 </div>
 <div class="phase">
 <div class="ph-h">3단계 · 확대·개발<span>61 ~ 90일</span></div>
 <ul>
-<li>성과 매체·캠페인 확대, 저효율 종료</li>
+<li>성과 확인된 외부 채널·크리에이터 <b>확대</b>, 저효율 종료</li>
+<li>시세 데이터 API·PR 저널리즘 본격화</li>
 <li>VIP 등급제·마일리지 설계</li>
-<li>리니지클래식 맞춤 등록 UI·HOT매물 분류</li>
-<li>시세 API·PR 저널리즘</li>
-<li>계정 스펙 수치화 개발 타당성 검토</li>
+<li>게임별 맞춤 등록 UI·HOT매물 자동분류</li>
+<li>계정 스펙 수치화·표준화 개발 타당성 검토</li>
 <li>정례 업무 전환·개발 우선순위 확정</li>
 </ul>
 </div>
@@ -613,7 +568,7 @@
 
 <!-- ===== 8. KPI & 리스크 ===== -->
 <div class="tab-panel" id="tab-measurement"><section class="slide"><div class="wrap">
-<div class="kicker">Part 9 · 성과지표</div>
+<div class="kicker">Part 8 · 성과지표</div>
 <h2 class="sec">성과 측정 체계</h2>
 <h3>단계별 마케팅 목표</h3>
 <table>
@@ -641,17 +596,17 @@
 </div></section></div>
 <!-- ===== 10. 최종 결론 ===== -->
 <div class="tab-panel" id="tab-conclusion"><section class="slide"><div class="wrap">
-<div class="kicker">Part 10 · 결론</div>
+<div class="kicker">Part 9 · 결론</div>
 <h2 class="sec">최종 결론</h2>
-<p class="lead">구매자 모객은 신규 유입 확보와 내부 전환 개선을 동시에 추진해야 합니다. 앞서 제시한 4대 방향을 90일 로드맵 순서로 실행해, 단기 거래 회복과 안정적인 구매자 기반 확대를 함께 달성하고자 합니다.</p>
-<div class="callout"><div class="t">실행 원칙</div>내부 전환 과제를 먼저 검증하고 <b>성과가 확인된 과제만 확대</b>합니다. 신규 유입은 고객 접점을 직접 발굴해 넓히되, <b>매물·판매자 공급이 확보된 게임부터</b> 집행해 예산 낭비를 막습니다. 모든 과제는 <b>대조군 비교로 순증 효과</b>를 확인한 뒤 확대·중단을 판단합니다.</div>
-<div class="callout blue"><div class="t">최종 도출</div>아이템매니아·아이템베이를 <b>"게임 거래를 고민할 때 가장 먼저 찾는 정보·거래 플랫폼"</b>으로 강화하고자 합니다. 마케팅팀은 고객 접점을 직접 발굴하고, 서비스는 신뢰·시세·매물 정보를 제공해 방문을 거래로 연결합니다.</div>
+<p class="lead">구매자 모객은 <b>외부에서 신규 구매자를 데려오는 것</b>을 중심에 두고, 데려온 구매자를 실제 거래·재구매로 잇는 내부 전환을 함께 추진하고자 합니다. 앞서 제시한 4대 방향과 외부 유치 TOP 10을 90일 로드맵 순서로 실행해, 안정적인 구매자 기반 확대를 달성하고자 합니다.</p>
+<div class="callout"><div class="t">실행 원칙</div>고객이 있는 <b>외부 접점(커뮤니티·크리에이터·스트리머·디스코드·PC방·제휴)</b>에서 구매자를 직접 발굴해 유입을 넓히되, <b>매물·판매자 공급이 확보된 게임부터</b> 집행해 예산 낭비를 막습니다. 유입된 구매자는 신뢰·시세·매물 정보와 CRM으로 거래·재구매로 연결하며, 모든 과제는 <b>대조군 비교로 순증 효과</b>를 확인한 뒤 확대·중단을 판단합니다.</div>
+<div class="callout blue"><div class="t">최종 도출</div>아이템매니아·아이템베이를 <b>"게임 거래를 고민할 때 가장 먼저 찾는 정보·거래 플랫폼"</b>으로 강화하고자 합니다. 마케팅팀은 <b>광고 운영 조직을 넘어 구매자를 직접 발굴하는 세일즈 조직</b>으로 전환하고, 서비스는 신뢰·시세·매물 정보를 제공해 방문을 거래로 연결합니다.</div>
 </div></section></div>
 <footer class="foot">
 <div class="wrap">
 <b>구매자 모객 전략 보고서</b><br/>
-    작성일 2026.07.16 · 아이템매니아 · 아이템베이 통합 전략 · 경영진 보고용<br/>
-<span style="opacity:.7;font-size:12px;">데이터 출처: 아이템매니아 일자별·게임별 거래데이터(2026.05~07), Google Search Console(2026.05.01~07.13)</span>
+    아이템매니아 · 아이템베이 통합 전략 · 경영진 보고용<br/>
+<span style="opacity:.7;font-size:12px;">작성 근거: 마케팅팀 구매자 모객 1차 아이디어 취합(2026.07) · 팀원 9인 제출안 기반</span>
 </div>
 </footer>
 
